@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sellers",
+  "info": {
+    "singularName": "seller",
+    "pluralName": "sellers",
+    "displayName": "seller",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "mobile": {
+      "type": "biginteger"
+    },
+    "profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "address": {
+      "type": "richtext"
+    },
+    "city": {
+      "type": "string"
+    },
+    "store_name": {
+      "type": "string"
+    },
+    "bike_listings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bike-listing.bike-listing",
+      "mappedBy": "seller"
+    }
+  }
+}

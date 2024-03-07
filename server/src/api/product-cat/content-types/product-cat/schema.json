@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_cats",
+  "info": {
+    "singularName": "product-cat",
+    "pluralName": "product-cats",
+    "displayName": "ProductCat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "product_cats"
+    }
+  }
+}

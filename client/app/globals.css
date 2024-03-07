@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 10px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-bg text-foreground;
+  }
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+*::-webkit-scrollbar {
+  @apply w-[10px] h-[5px];
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded bg-primary_light;
+}
+
+*::-webkit-scrollbar-track {
+  @apply !bg-transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  @apply hidden;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary/70 shadow-md shadow-primary/60;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-[#02293e];
+}
+
+.input {
+  @apply border !border-slate-300 bg-transparent px-4 py-[0.35rem] outline-none focus:!border-primary;
+}
+
+a.active {
+  @apply relative text-primary before:absolute before:w-full before:h-[2px] before:bg-primary before:left-0 before:bottom-0 lg:before:-bottom-[0.1rem];
+}
+
+.section_title {
+  font-size: 24px;
+  color: #111111;
+  font-weight: 700;
+}
+
+.isOpen {
+  @apply max-h-screen py-4 pt-0;
+}
