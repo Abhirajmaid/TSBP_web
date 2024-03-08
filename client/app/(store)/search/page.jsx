@@ -25,24 +25,10 @@ const page = () => {
   console.log("Colors:", colors);
 
   return (
-    <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-5">
+    <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
       {BikesData?.map((item) => {
         return (
-          <div className="w-[23%]" key={item.id}>
-            <BikeCard {...item} />
-          </div>
-        );
-      })}
-      {BikesData?.map((item) => {
-        return (
-          <div className="w-[23%]" key={item.id}>
-            <BikeCard {...item} />
-          </div>
-        );
-      })}
-      {BikesData?.map((item) => {
-        return (
-          <div className="w-[23%]" key={item.id}>
+          <div className="w-[32%]" key={item.id}>
             <BikeCard {...item} />
           </div>
         );

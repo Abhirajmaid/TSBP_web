@@ -12,7 +12,7 @@ import React from "react";
 const page = async () => {
   return (
     <div
-      className="px-[4%] bg-bg gap-[20px] flex flex-col"
+      className="px-[4%] bg-bg gap-[30px] flex flex-col"
       style={{ paddingTop: "90px" }}
     >
       <BikeCat />

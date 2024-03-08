@@ -18,7 +18,7 @@ const BikeCat = () => {
               className="w-[230px] h-auto"
               alt={item.name}
             />
-            <h2 className="text-lg font-semibold">{item.name}</h2>
+            <h2 className="text-lg font-medium">{item.name}</h2>
           </div>
         );
       })}

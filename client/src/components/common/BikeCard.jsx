@@ -5,7 +5,7 @@ import React from "react";
 
 const Tag = ({ tag }) => {
   return (
-    <p className="p-1 px-[6px] bg-gray-300 text-black rounded-lg ">{tag}</p>
+    <p className="p-1 px-[6px] bg-[#E8E8E8] text-black rounded-lg ">{tag}</p>
   );
 };
 
@@ -24,7 +24,7 @@ const BikeCard = ({
   special,
 }) => {
   return (
-    <div className="flex flex-col gap-2 h-full w-full cursor-pointer hover:shadow-2xl hover:scale-[1.05] transition-all bg-white rounded-xl overflow-hidden">
+    <div className="w-full flex flex-col gap-2 h-fit cursor-pointer hover:shadow-2xl hover:scale-[1.05] transition-all bg-white rounded-xl overflow-hidden">
       <div className="h-[55%]">
         <Image
           src={bike_image}
@@ -54,7 +54,7 @@ const BikeCard = ({
             <Tag tag={bs} />
           </>
         </span>
-        <span className="flex justify-between text-black/70 font-bold text-[15px]">
+        <span className="flex justify-between text-[#666666] font-bold text-[15px]">
           <p>₹{emi}/month</p>
           <p>₹{price}</p>
         </span>

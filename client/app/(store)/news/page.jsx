@@ -10,7 +10,7 @@ const page = () => {
         Lorem ipsum dolor sit amet consectetur. Diam pharetra tellus sed nulla
         augue. Ornare
       </p>
-      <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3">
+      <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
         {BlogsData?.map((item, i) => {
           return (
             <div className="w-[32%]" key={i}>

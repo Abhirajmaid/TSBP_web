@@ -89,7 +89,7 @@ const Navbar = () => {
                   href={item.url}
                   className={`${
                     isActive(`${item.url}`) ? "text-primary_light" : ""
-                  } font-semibold text-[0.9vw] hover:text-primary_light`}
+                  } font-semibold text-[1vw] hover:text-primary_light`}
                 >
                   <li>{item.linkText}</li>
                 </Link>
@@ -99,7 +99,9 @@ const Navbar = () => {
         </div>
         <div className="flex gap-5 items-center">
           <Link href="/seller">
-            <Button className="font-semibold text-lg">Sell Your Bike</Button>
+            <Button className="font-semibold text-[1vw] bg-white/15 hover:bg-white/30">
+              Sell Your Bike
+            </Button>
           </Link>
           <SignedIn>
             <UserButton
@@ -110,7 +112,9 @@ const Navbar = () => {
           </SignedIn>
           <SignedOut>
             <Link href="/sign-in">
-              <Button className="font-semibold text-lg">Login</Button>
+              <Button className="font-semibold text-[1vw] bg-white/15 hover:bg-white/30">
+                Login
+              </Button>
             </Link>
           </SignedOut>
         </div>

@@ -6,36 +6,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 // import required modules
-import {
-  FreeMode,
-  Pagination,
-  Keyboard,
-  Mousewheel,
-  Navigation,
-} from "swiper/modules";
+import { FreeMode, Keyboard, Mousewheel } from "swiper/modules";
 
 import { BikesData } from "@src/data/data";
 import { BikeCard } from ".";
 
 const ListingSlider = () => {
   return (
-    <div className="w-full p-6 bg-transparent rounded-xl">
+    <div className="w-full bg-transparent rounded-xl">
       <Swiper
         slidesPerView={5}
         spaceBetween={15}
         freeMode={true}
-        // pagination={{
-        //   clickable: true,
-        // }}
-        navigation={true}
-        modules={[FreeMode, Pagination, Keyboard, Mousewheel, Navigation]}
+        modules={[FreeMode, Keyboard, Mousewheel]}
         keyboard={true}
         mousewheel={true}
-        className="mySwiper h-auto w-full "
+        className="mySwiper h-auto w-full !overflow-visible"
       >
         {BikesData.map((item) => {
           return (
