@@ -29,7 +29,7 @@ const HomeSwiper = () => {
           dynamicBullets: true,
         }}
         modules={[Pagination, Navigation, Keyboard, Mousewheel, Autoplay]}
-        className="mySwiper h-[500px] flex items-center justify-center"
+        className="mySwiper h-[50vh] max-h-[550px] flex items-center justify-center"
         navigation={true}
         keyboard={true}
         mousewheel={false}
@@ -39,7 +39,7 @@ const HomeSwiper = () => {
             src="/images/carouselImg.png"
             width={1000}
             height={1000}
-            className="h-full w-full rounded-xl"
+            className="h-full w-full rounded-xl object-cover"
           />
         </SwiperSlide>
         <SwiperSlide>

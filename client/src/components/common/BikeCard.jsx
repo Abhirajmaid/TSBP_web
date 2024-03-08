@@ -24,7 +24,7 @@ const BikeCard = ({
   special,
 }) => {
   return (
-    <div className="flex flex-col gap-2 h-full w-full cursor-pointer hover:shadow-2xl hover:scale-[1.05] p-1 transition-all">
+    <div className="flex flex-col gap-2 h-full w-full cursor-pointer hover:shadow-2xl hover:scale-[1.05] transition-all bg-white rounded-xl overflow-hidden">
       <div className="h-[55%]">
         <Image
           src={bike_image}
@@ -34,7 +34,7 @@ const BikeCard = ({
           alt="tsbp"
         />
       </div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 px-3 pb-4">
         <span className="flex justify-between">
           <h2 className="font-bold text-base">{name}</h2>
           <p>{year}</p>
@@ -43,7 +43,7 @@ const BikeCard = ({
           <Icon icon="ep:location" width={20} height={20} />
           <p>{location}</p>
         </span>
-        <span className="flex items-center gap-3 text-[0.6vw]">
+        <span className="flex items-center gap-3 text-[0.7vw]">
           <>
             <Tag tag={`${kms} kms`} />
           </>

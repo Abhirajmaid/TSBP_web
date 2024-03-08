@@ -4,11 +4,11 @@ import { bikesCat } from "@src/data/data";
 
 const BikeCat = () => {
   return (
-    <div className="w-full flex justify-between gap-3 bg-white p-[30px] rounded-xl">
+    <div className="w-full flex justify-between gap-3 bg-white p-[20px] rounded-xl">
       {bikesCat.map((item) => {
         return (
           <div
-            className="rounded-lg py-6 px-2 border-[2px] bg-white border-black/20 flex flex-col justify-center items-center cursor-pointer"
+            className="rounded-lg py-5 px-2 border-[2px] bg-white border-black/20 flex flex-col justify-center items-center cursor-pointer"
             key={item.id}
           >
             <Image
