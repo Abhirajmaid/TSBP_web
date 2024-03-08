@@ -6,7 +6,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
-import { Navigation, Pagination, Keyboard, Mousewheel } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Keyboard,
+  Mousewheel,
+  Autoplay,
+} from "swiper/modules";
 import Image from "next/image";
 
 // import {ads}
@@ -15,14 +21,18 @@ const HomeSwiper = () => {
   return (
     <div>
       <Swiper
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination, Navigation, Keyboard, Mousewheel]}
+        modules={[Pagination, Navigation, Keyboard, Mousewheel, Autoplay]}
         className="mySwiper h-[500px] flex items-center justify-center"
         navigation={true}
         keyboard={true}
-        mousewheel={true}
+        mousewheel={false}
       >
         <SwiperSlide>
           <Image

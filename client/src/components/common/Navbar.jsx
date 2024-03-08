@@ -80,7 +80,7 @@ const Navbar = () => {
             />
           </form>
         </div>
-        <div className="w-[22%] px-2 top-5">
+        <div className="w-[25%] px-1 top-5">
           <ul className="flex item-center justify-between w-full gap-[12px] text-white">
             {navLinks.map((item, id) => {
               return (
@@ -89,7 +89,7 @@ const Navbar = () => {
                   href={item.url}
                   className={`${
                     isActive(`${item.url}`) ? "text-primary_light" : ""
-                  } font-semibold text-base hover:text-primary_light`}
+                  } font-semibold text-[0.9vw] hover:text-primary_light`}
                 >
                   <li>{item.linkText}</li>
                 </Link>

@@ -9,7 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 // import required modules
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination, Keyboard, Mousewheel } from "swiper/modules";
 
 import { BikesData } from "@src/data/data";
 import { BikeCard } from ".";
@@ -24,7 +24,9 @@ const ListingSlider = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[FreeMode, Pagination]}
+        modules={[FreeMode, Pagination, Keyboard, Mousewheel]}
+        keyboard={true}
+        mousewheel={true}
         className="mySwiper h-auto w-full "
       >
         {BikesData.map((item) => {

@@ -4,7 +4,9 @@ import Image from "next/image";
 import React from "react";
 
 const Tag = ({ tag }) => {
-  return <p className="p-1 px-[6px] bg-gray-300 rounded-lg ">{tag}</p>;
+  return (
+    <p className="p-1 px-[6px] bg-gray-300 text-black rounded-lg ">{tag}</p>
+  );
 };
 
 const BikeCard = ({
@@ -41,7 +43,7 @@ const BikeCard = ({
           <Icon icon="ep:location" width={20} height={20} />
           <p>{location}</p>
         </span>
-        <span className="flex items-center gap-3 text-[12px]">
+        <span className="flex items-center gap-3 text-[0.6vw]">
           <>
             <Tag tag={`${kms} kms`} />
           </>
@@ -52,7 +54,7 @@ const BikeCard = ({
             <Tag tag={bs} />
           </>
         </span>
-        <span className="flex justify-between text-black/70 font-bold">
+        <span className="flex justify-between text-black/70 font-bold text-[15px]">
           <p>₹{emi}/month</p>
           <p>₹{price}</p>
         </span>
