@@ -1,5 +1,4 @@
 import { Filters } from "@src/components/common";
-import { BikeCat } from "@src/components/home";
 import React from "react";
 
 export default function Layout({ children }) {

@@ -1,4 +1,3 @@
-"use client";
 import "./globals.css";
 import { montserrat } from "./fonts";
 import { Providers } from "@app/providers";

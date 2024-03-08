@@ -1,4 +1,3 @@
-"use client";
 import { montserrat } from "@app/fonts";
 import { Navbar, SellerTabs } from "@src/components/seller";
 

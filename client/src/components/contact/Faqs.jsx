@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { faqs } from "@src/data/data";
 import { BiMinus, BiPlus } from "react-icons/bi";
-import Link from "next/link";
 
 const SingleFaq = ({ question, response, url }) => {
   const [isOpen, setIsOpen] = useState(false);

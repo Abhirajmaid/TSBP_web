@@ -1,4 +1,3 @@
-"use client";
 import { NewsCard } from "@src/components/common";
 import { BlogsData } from "@src/data/data";
 import React from "react";

@@ -2,6 +2,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { bikesCat } from "@src/data/data";
+import Image from "next/image";
 
 const colors = ["bg-red-600", "bg-blue-600", "bg-gray-600", "bg-green-600"];
 
@@ -49,7 +51,6 @@ const BodyTypeList = [
     name: "bodytype",
   },
 ];
-
 const ColorList = [
   {
     id: "green",
@@ -99,6 +100,13 @@ const Filters = () => {
     }
   }
 
+  function handleClick(e) {
+    // undefine
+    const { name, value } = e.target;
+    console.log(value);
+    router.push(pathname + "?" + createQueryString(name, value));
+  }
+
   const createQueryString = useCallback(
     (name, value) => {
       if (params.has(name, value)) {
@@ -116,9 +124,31 @@ const Filters = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl w-[23%] fixed ">
+    <div className="bg-white p-6 rounded-xl w-full ">
       <h3 className="text-sm text-gray-400">Filters</h3>
       <div className="flex flex-col gap-4 mt-5">
+        <div className="flex flex-wrap w-full gap-y-4 justify-between">
+          {bikesCat.map((item) => {
+            return (
+              <div
+                className="w-[48%] rounded-lg py-6 px-2 border-[2px] bg-white border-black/20 flex flex-col justify-center items-center cursor-pointer"
+                key={item.id}
+                name={item.name}
+                value={item.name}
+                onClick={handleClick} // undefine
+              >
+                <Image
+                  src={item.image}
+                  width={1500}
+                  height={1500}
+                  className="w-[130px] h-auto"
+                  alt={item.name}
+                />
+                <h2 className="text-lg font-semibold">{item.name}</h2>
+              </div>
+            );
+          })}
+        </div>
         <div>
           <h3 className="text-lg font-semibold">Brands</h3>
           <div className="flex flex-col gap-3 p-3 bg-bg_dark rounded-xl">

@@ -1,5 +1,3 @@
-"use client";
-
 import { Sidebar } from "@src/components/account";
 
 export default function Layout({ children }) {

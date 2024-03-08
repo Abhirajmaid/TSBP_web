@@ -6,8 +6,8 @@ export const navLinks = [
     },
     {
         id: 2,
-        linkText: "TSBP One",
-        url: "/tsbp-one",
+        linkText: "About Us",
+        url: "/about-us",
     },
     {
         id: 3,
