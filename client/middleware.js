@@ -4,7 +4,7 @@ export default authMiddleware({
     // Routes that can be accessed while signed out
     publicRoutes: [
         '/',
-        '/home',
+        '/store',
         '/search',
         '/contact-us',
         '/listings',
@@ -16,11 +16,9 @@ export default authMiddleware({
         '/events',
         '/events/:id',
         '/api/webhook/clerk',
-        '/api/webhook/stripe',
     ],
     ignoredRoutes: [
         '/api/webhook/clerk',
-        '/api/webhook/stripe'
     ]
 });
 

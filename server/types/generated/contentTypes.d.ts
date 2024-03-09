@@ -934,6 +934,48 @@ export interface ApiBrandOrCompanyNameBrandOrCompanyName
   };
 }
 
+export interface ApiClientUserClientUser extends Schema.CollectionType {
+  collectionName: 'client_users';
+  info: {
+    singularName: 'client-user';
+    pluralName: 'client-users';
+    displayName: 'Client User';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String;
+    fullName: Attribute.String;
+    user_id: Attribute.UID;
+    seller: Attribute.Relation<
+      'api::client-user.client-user',
+      'oneToOne',
+      'api::seller.seller'
+    >;
+    email: Attribute.Email;
+    profile: Attribute.String;
+    lastName: Attribute.String;
+    username: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::client-user.client-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::client-user.client-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1032,6 +1074,12 @@ export interface ApiSellerSeller extends Schema.CollectionType {
       'api::seller.seller',
       'oneToMany',
       'api::bike-listing.bike-listing'
+    >;
+    user_id: Attribute.UID;
+    client_user: Attribute.Relation<
+      'api::seller.seller',
+      'oneToOne',
+      'api::client-user.client-user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1202,6 +1250,7 @@ declare module '@strapi/types' {
       'api::bike-listing.bike-listing': ApiBikeListingBikeListing;
       'api::bike-model.bike-model': ApiBikeModelBikeModel;
       'api::brand-or-company-name.brand-or-company-name': ApiBrandOrCompanyNameBrandOrCompanyName;
+      'api::client-user.client-user': ApiClientUserClientUser;
       'api::product.product': ApiProductProduct;
       'api::product-cat.product-cat': ApiProductCatProductCat;
       'api::seller.seller': ApiSellerSeller;

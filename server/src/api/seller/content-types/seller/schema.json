@@ -43,6 +43,15 @@
       "relation": "oneToMany",
       "target": "api::bike-listing.bike-listing",
       "mappedBy": "seller"
+    },
+    "user_id": {
+      "type": "uid"
+    },
+    "client_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::client-user.client-user",
+      "mappedBy": "seller"
     }
   }
 }
