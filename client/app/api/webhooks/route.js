@@ -45,15 +45,15 @@ async function POST(req) {
     const eventType = evt.type;
 
     if (eventType === 'user.created') {
-        const { id, emailAddresses, imageUrl, firstName, lastName, username } = evt.data;
+        const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
         const user = {
-            user_id: id,
-            email: emailAddresses[0].emailAddresses,
-            firstName: firstName,
-            lastName: lastName,
+            clerkId: id,
+            email: email_addresses[0].email_address,
             username: username,
-            profile: imageUrl,
+            firstName: first_name,
+            lastName: last_name,
+            photo: image_url,
         }
 
         const newUser = await createUser(user)

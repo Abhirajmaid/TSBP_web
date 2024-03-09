@@ -15,7 +15,7 @@ export default authMiddleware({
         '/terms',
         '/events',
         '/events/:id',
-        '/api/webhook/clerk',
+        '/api/webhooks(.*)',
     ],
     ignoredRoutes: [
         '/api/webhook/clerk',
