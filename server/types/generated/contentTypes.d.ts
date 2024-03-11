@@ -949,11 +949,7 @@ export interface ApiClientUserClientUser extends Schema.CollectionType {
     firstName: Attribute.String;
     fullName: Attribute.String;
     user_id: Attribute.UID;
-    seller: Attribute.Relation<
-      'api::client-user.client-user',
-      'oneToOne',
-      'api::seller.seller'
-    >;
+    seller: Attribute.Boolean;
     email: Attribute.Email;
     profile: Attribute.String;
     lastName: Attribute.String;
@@ -1076,11 +1072,6 @@ export interface ApiSellerSeller extends Schema.CollectionType {
       'api::bike-listing.bike-listing'
     >;
     user_id: Attribute.UID;
-    client_user: Attribute.Relation<
-      'api::seller.seller',
-      'oneToOne',
-      'api::client-user.client-user'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

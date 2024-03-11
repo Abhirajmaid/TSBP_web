@@ -22,10 +22,7 @@
       "type": "uid"
     },
     "seller": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::seller.seller",
-      "inversedBy": "client_user"
+      "type": "boolean"
     },
     "email": {
       "type": "email"

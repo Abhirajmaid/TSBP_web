@@ -56,15 +56,7 @@ async function POST(req) {
             photo: image_url,
         }
 
-        const newUser = await createUser(user)
-        if (newUser) {
-            await clerkClient.users.updateUserMetadata(id, {
-                publicMetadata: {
-                    user_id: newUser._id
-                }
-            })
-        }
-
+        await createUser(user)
         return NextResponse.json({ message: 'OK', user: newUser })
     }
 

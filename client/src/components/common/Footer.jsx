@@ -26,9 +26,9 @@ const Footer = () => {
           <div>
             <h4 className="mb-[40px] font-semibold text-white">Links</h4>
             <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {navLinks.map((item) => {
+              {navLinks.map((item, i) => {
                 return (
-                  <Link href={item.url}>
+                  <Link href={item.url} key={i}>
                     <li>{item.linkText}</li>
                   </Link>
                 );
@@ -38,9 +38,9 @@ const Footer = () => {
           <div>
             <h4 className="mb-[40px] font-semibold text-white">Other Links</h4>
             <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {otherLinks.map((item) => {
+              {otherLinks.map((item, i) => {
                 return (
-                  <Link href={item.url}>
+                  <Link href={item.url} key={i}>
                     <li>{item.linkText}</li>
                   </Link>
                 );
@@ -52,9 +52,9 @@ const Footer = () => {
               Consumer Policy
             </h4>
             <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {customerLinks.map((item) => {
+              {customerLinks.map((item, i) => {
                 return (
-                  <Link href={item.url}>
+                  <Link href={item.url} key={i}>
                     <li>{item.linkText}</li>
                   </Link>
                 );
@@ -64,9 +64,9 @@ const Footer = () => {
           <div>
             <h4 className="mb-[40px] font-semibold text-white">Socials</h4>
             <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {socialLinks.map((item) => {
+              {socialLinks.map((item, i) => {
                 return (
-                  <Link href={item.url} target="_blank">
+                  <Link href={item.url} target="_blank" key={i}>
                     <li>{item.linkText}</li>
                   </Link>
                 );

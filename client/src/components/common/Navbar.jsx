@@ -33,12 +33,7 @@ const Navbar = () => {
     <>
       <div className="fixed bg-black md:h-[70px] h-[80px] top-0 left-0 w-full z-[99] px-[3%] md:px-[3%] flex gap-4 justify-between items-center">
         <Link href="/">
-          <Image
-            src="/images/LOGO.png"
-            width={300}
-            height={300}
-            alt="RKChaiwala"
-          />
+          <Image src="/images/LOGO.png" width={300} height={300} alt="tsbp" />
         </Link>
         <div>
           <Select>
@@ -76,7 +71,7 @@ const Navbar = () => {
             <input
               type="submit"
               className="absolute -left-[999999] w-[1px] h-[1px]"
-              tabindex="-1"
+              tabIndex="-1"
             />
           </form>
         </div>
