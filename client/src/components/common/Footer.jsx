@@ -8,9 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ bg }) => {
   return (
-    <div className="bg-primary h-fit w-full mt-[60px]">
+    <div className={`bg-${bg} h-fit w-full mt-[60px]`}>
       <div className="flex justify-between items-center p-[5%]">
         <div className="flex flex-col gap-8 text-white">
           <Image

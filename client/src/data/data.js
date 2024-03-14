@@ -358,3 +358,61 @@ export const faqs = [
             "Premium service gives you access to all information on Flats, Hostels, and PG's along with a physical visit , as well as complete access to sections of roommates, explore nearby, mess menu , and receive numerous interesting offers and discounts on exclusive amenities.",
     },
 ];
+
+export const aboutData = [
+    {
+        id: 1,
+        title: "Who Are We?",
+        text: "Born out of a shared love for the open road and the thrill of two-wheeled adventures, we've created a haven for motorcycle enthusiasts like you. Our carefully curated marketplace",
+        img: "/images/about.png",
+    },
+    {
+        id: 2,
+        title: "Who Are We?",
+        text: "Born out of a shared love for the open road and the thrill of two-wheeled adventures, we've created a haven for motorcycle enthusiasts like you. Our carefully curated marketplace",
+        img: "/images/about.png",
+    },
+    {
+        id: 3,
+        title: "Who Are We?",
+        text: "Born out of a shared love for the open road and the thrill of two-wheeled adventures, we've created a haven for motorcycle enthusiasts like you. Our carefully curated marketplace",
+        img: "/images/about.png",
+    },
+];
+
+export const eventData = [
+    {
+        id: 1,
+        title: "Join Us For The Largest Motorcycle Festival in Pune",
+        button_txt: "View Event",
+        video: "/images/EventAssets/event1.mp4",
+        date: "9 - 4 March 2024",
+    }
+]
+
+export const testimonials = [
+    {
+        id: 1,
+        name: "Wabz Braize",
+        role: "Front-end developer",
+        image: "/images/avatar.jpg",
+        reviewText:
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis porro ex perferendis, nulla consectetur consequuntur odio qui adipisci harum earum dolor, eius accusantium quia praesentium.",
+    },
+    {
+        id: 2,
+        name: "Ethan Hunt",
+        role: "Backend engineer",
+        image: "/images/avatar.jpg",
+        reviewText:
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis porro ex perferendis, nulla consectetur consequuntur odio qui adipisci harum earum dolor, eius accusantium quia praesentium.",
+    },
+    {
+        id: 3,
+        name: "Raven Kent",
+        role: "UI Designer",
+        image: "/images/avatar.jpg",
+        reviewText:
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis porro ex perferendis, nulla consectetur consequuntur odio qui adipisci harum earum dolor, eius accusantium quia praesentium.",
+    },
+];

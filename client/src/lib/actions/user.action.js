@@ -1,4 +1,4 @@
-
+"use server"
 // Define your Strapi API URL
 const apiUrl = 'http://localhost:1337'; // Change this to your Strapi server URL
 

@@ -33,7 +33,13 @@ const Navbar = () => {
     <>
       <div className="fixed bg-black md:h-[70px] h-[80px] top-0 left-0 w-full z-[99] px-[3%] md:px-[3%] flex gap-4 justify-between items-center">
         <Link href="/">
-          <Image src="/images/LOGO.png" width={300} height={300} alt="tsbp" />
+          <Image
+            src="/images/LOGO.png"
+            width={300}
+            height={100}
+            alt="The SuperBike Project"
+            className="h-[25px] w-[270px]"
+          />
         </Link>
         <div>
           <Select>
@@ -93,7 +99,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex gap-5 items-center">
-          <Link href="/seller">
+          <Link href="/seller/dashboard">
             <Button className="font-semibold text-[1vw] bg-white/15 hover:bg-white/30">
               Sell Your Bike
             </Button>

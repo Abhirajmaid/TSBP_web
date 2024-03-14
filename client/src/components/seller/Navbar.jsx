@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex gap-5 items-center">
-          <Link href="/home">
+          <Link href="/store">
             <Button className="font-semibold text-lg">Go to Store</Button>
           </Link>
           <SignedIn>
@@ -64,7 +64,9 @@ const Navbar = () => {
           </SignedIn>
           <SignedOut>
             <Link href="/sign-in">
-              <Button className="font-semibold text-lg">Login</Button>
+              <Button className="font-semibold text-[1vw] bg-white/15 hover:bg-white/30">
+                Login
+              </Button>
             </Link>
           </SignedOut>
         </div>
