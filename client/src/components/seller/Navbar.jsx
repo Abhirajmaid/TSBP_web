@@ -53,7 +53,9 @@ const Navbar = () => {
         </div>
         <div className="flex gap-5 items-center">
           <Link href="/store">
-            <Button className="font-semibold text-lg">Go to Store</Button>
+            <Button className="font-semibold text-lg bg-white/15 hover:bg-white/30">
+              Go to Store
+            </Button>
           </Link>
           <SignedIn>
             <UserButton

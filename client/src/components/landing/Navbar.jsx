@@ -1,3 +1,4 @@
+"use client";
 import { navLinks } from "@src/data/navLinks";
 import Image from "next/image";
 import Link from "next/link";
