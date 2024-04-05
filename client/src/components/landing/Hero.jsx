@@ -7,8 +7,8 @@ const Hero = () => {
   return (
     <div className="flex flex-col h-screen w-full">
       <div className="flex justify-between w-full items-center ">
-        <div className="flex flex-col gap-6 w-[35%]">
-          <h1 className="text-white text-[3vw] font-semibold leading-[65px]">
+        <div className="flex flex-col gap-6 w-[40%]">
+          <h1 className="text-white text-[3.5vw] font-bold leading-[55px]">
             Finding the ride <br /> of your dreams <br /> has never been easier
           </h1>
           <Link href="/store">
@@ -17,7 +17,7 @@ const Hero = () => {
             </Button>
           </Link>
         </div>
-        <div className="flex flex-col w-[60%] -translate-x-[10%]">
+        <div className="flex flex-col w-[60%]">
           <Image
             src="images/landing_hero.svg"
             height={500}
@@ -29,7 +29,7 @@ const Hero = () => {
             src="images/shadow.svg"
             height={1000}
             width={1000}
-            className="-translate-y-[50%] -translate-x-[8%] w-full h-auto z-[0]"
+            className="-translate-y-[50%] w-full h-auto z-[0]"
             alt="TSBP"
           />
         </div>

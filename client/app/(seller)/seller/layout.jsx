@@ -13,7 +13,7 @@ export default async function Layout({ children }) {
   return (
     <>
       {/* <SellerProtectedRoute user={user}> */}
-      <div className={`${montserrat.className} mt-[100px]`}>
+      <div className={`${montserrat.className}`}>
         <Navbar />
         {children}
         <SellerTabs />

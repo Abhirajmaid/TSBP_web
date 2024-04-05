@@ -21,14 +21,14 @@ const TestimonialCard = ({ image, reviewText, name, role }) => {
         height={100}
         className=" object-cover md:w-[120px] h-[120px] w-[90px] mx-auto rounded-full"
       />
-      <div class="flex gap-4 relative text-white">
+      <div className="flex gap-4 relative text-white">
         <span>
           <Icon
             icon="bi:quote"
             className=" md:static absolute text-[3rem] top-0 left-0 text-primary_light"
           />
         </span>
-        <div class="md:text-right text-center text-base font-medium">
+        <div className="md:text-right text-center text-base font-medium">
           <p className="italic mb-4 font-Poppins text-lg">{reviewText}</p>
           <h4 className="md:text-right text-center text-primary_light text-base font-medium">
             - {name} <br /> <span>( {role} )</span>

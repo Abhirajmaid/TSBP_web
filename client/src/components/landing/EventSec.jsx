@@ -22,7 +22,7 @@ const EventSec = () => {
             <video
               muted
               autoPlay
-              loop="true"
+              loop
               width="320"
               height="240"
               className="w-full h-full top-0 left-0 object-cover"

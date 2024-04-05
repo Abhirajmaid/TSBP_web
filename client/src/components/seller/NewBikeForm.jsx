@@ -5,6 +5,16 @@ import { motion } from "framer-motion";
 import { FormDataSchema } from "@src/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@src/components/ui/select";
+import { cities } from "@src/data/data";
 
 const steps = [
   {
@@ -20,7 +30,7 @@ const steps = [
   { id: "Step 3", name: "Complete" },
 ];
 
-export default function SellerReg() {
+export default function Form() {
   const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const delta = currentStep - previousStep;
@@ -64,7 +74,7 @@ export default function SellerReg() {
   };
 
   return (
-    <section className="inset-0 bg-white p-14 rounded-xl flex flex-col justify-between overflow-hidden">
+    <section className="bg-white p-14 rounded-xl flex flex-col justify-between overflow-hidden w-[70%]">
       {/* steps */}
       <nav aria-label="Progress">
         <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
@@ -114,7 +124,7 @@ export default function SellerReg() {
             <p className="mt-1 text-sm leading-6 text-gray-600">
               Provide some basic detail about bike!
             </p>
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-9">
               <div className="sm:col-span-3">
                 <label
                   htmlFor="firstName"
@@ -123,18 +133,27 @@ export default function SellerReg() {
                   Brand Name
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    id="firstName"
-                    {...register("firstName")}
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
-                  />
-                  {errors.firstName?.message && (
-                    <p className="mt-2 text-sm text-red-400">
-                      {errors.firstName.message}
-                    </p>
-                  )}
+                  <Select>
+                    <SelectTrigger className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                      <SelectValue placeholder="Brand" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Brands</SelectLabel>
+                        {cities.map((city) => {
+                          return (
+                            <SelectItem
+                              value={city.value}
+                              key={city.value}
+                              className="hover:text-gray-500 cursor-pointer text-center"
+                            >
+                              {city.label}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -143,30 +162,70 @@ export default function SellerReg() {
                   htmlFor="lastName"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Last name
+                  Model
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    id="lastName"
-                    {...register("lastName")}
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
-                  />
-                  {errors.lastName?.message && (
-                    <p className="mt-2 text-sm text-red-400">
-                      {errors.lastName.message}
-                    </p>
-                  )}
+                  <Select>
+                    <SelectTrigger className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                      <SelectValue placeholder="Model" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Models</SelectLabel>
+                        {cities.map((city) => {
+                          return (
+                            <SelectItem
+                              value={city.value}
+                              key={city.value}
+                              className="hover:text-gray-500 cursor-pointer text-center"
+                            >
+                              {city.label}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Version
+                </label>
+                <div className="mt-2">
+                  <Select>
+                    <SelectTrigger className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                      <SelectValue placeholder="Version" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Versions</SelectLabel>
+                        {cities.map((city) => {
+                          return (
+                            <SelectItem
+                              value={city.value}
+                              key={city.value}
+                              className="hover:text-gray-500 cursor-pointer text-center"
+                            >
+                              {city.label}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
-              <div className="sm:col-span-4">
+              <div className="sm:col-span-9">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Email address
+                  Year of Manufacture
                 </label>
                 <div className="mt-2">
                   <input
@@ -174,7 +233,146 @@ export default function SellerReg() {
                     type="email"
                     {...register("email")}
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
+                    placeholder="2000"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                  {errors.email?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-9">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Kms Ridden
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    autoComplete="email"
+                    placeholder="3065km"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                  {errors.email?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-9">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  City
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    autoComplete="email"
+                    placeholder="Pune"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                  {errors.email?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-9">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Expected Price
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    autoComplete="email"
+                    placeholder="Rs. 300,000"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                  {errors.email?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-9">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Owner
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    autoComplete="email"
+                    placeholder="Aditya Mali"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                  {errors.email?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-9">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Registration
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    autoComplete="email"
+                    placeholder="MH 12 GA 6969"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                  {errors.email?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-9">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Colour
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    autoComplete="email"
+                    placeholder="White"
+                    className="w-full rounded-md border-0 p-2 text-gray-900 shadow-sm bg-black/5 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                   {errors.email?.message && (
                     <p className="mt-2 text-sm text-red-400">
