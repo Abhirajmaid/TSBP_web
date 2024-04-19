@@ -16,7 +16,9 @@ export default async function Layout({ children }) {
       <div className={`${montserrat.className}`}>
         <Navbar />
         {children}
-        <SellerTabs />
+        <div className="fixed bottom-0 w-full ">
+          <SellerTabs />
+        </div>
       </div>
       {/* </SellerProtectedRoute> */}
     </>
