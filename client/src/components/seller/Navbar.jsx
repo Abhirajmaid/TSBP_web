@@ -21,10 +21,11 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           <Link href="/">
             <Image
-              src="/images/LOGO.png"
-              width={300}
+              src="/images/Logo + Wordmark Horizontal(white).png"
+              width={240}
               height={300}
               alt="RKChaiwala"
+              className="w-[240px] h-[35px]"
             />
           </Link>
           <div>
