@@ -1,4 +1,5 @@
 import { EventsSlider } from "@src/components/events";
+import { ComingSoon } from "@src/components/home";
 import React from "react";
 
 export const metadata = {
@@ -10,7 +11,8 @@ export const metadata = {
 const page = () => {
   return (
     <div className="-mb-[60px] h-screen min-h-[700px]">
-      <EventsSlider />
+      {/* <EventsSlider /> */}
+      <ComingSoon />
     </div>
   );
 };
