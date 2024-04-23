@@ -5,7 +5,7 @@ const apiUrl = 'https://dashboard.netgarage.in' // Change this to your Strapi se
 
 export const fetchNotifications = async () => {
     try {
-        const response = await fetch(`${apiUrl}/api/notifications?populate=*`, {
+        const response = await fetch(`${process.env.SERVER_URL}/api/notifications?populate=*`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

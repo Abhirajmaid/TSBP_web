@@ -5,7 +5,7 @@ const apiUrl = 'https://dashboard.netgarage.in'; // Change this to your Strapi s
 
 export const fetchListings = async () => {
     try {
-        const response = await fetch(`${apiUrl}/api/bike-listings?populate=*`, {
+        const response = await fetch(`${process.env.SERVER_URL}/api/bike-listings?populate=*`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

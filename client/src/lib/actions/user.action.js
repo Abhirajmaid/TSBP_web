@@ -6,7 +6,7 @@ const apiUrl = 'https://dashboard.netgarage.in'; // Change this to your Strapi s
 export const createUser = async (user) => {
     // console.log(user);
     try {
-        const response = await fetch(`${apiUrl}/api/client-users`, {
+        const response = await fetch(`${process.env.SERVER_URL}/api/client-users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
