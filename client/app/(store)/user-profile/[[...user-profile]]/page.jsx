@@ -18,7 +18,7 @@ const UserProfilePage = () => (
       <UserProfile.Page label="account" />
       <UserProfile.Link
         label="Sell Your Bike"
-        url="/seller"
+        url="/seller/dashboard"
         labelIcon={<Icon icon="ri:motorbike-fill" width={18} />}
       />
       <UserProfile.Page label="security" />

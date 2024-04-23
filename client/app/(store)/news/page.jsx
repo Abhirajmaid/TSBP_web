@@ -20,8 +20,8 @@ const page = () => {
     <div className="flex flex-col">
       <h1 className="text-[65px] font-bold mb-6 text-center">NEWS</h1>
       <p className="-mt-[15px] mb-8 md:w-[50%] text-center m-auto">
-        Lorem ipsum dolor sit amet consectetur. Diam pharetra tellus sed nulla
-        augue. Ornare
+        Stay in the loop with the latest motorcycle industry updates and
+        Netgarage announcements on our News page.
       </p>
       <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
         {newsData?.length == 0 ? (

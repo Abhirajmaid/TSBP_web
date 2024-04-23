@@ -12,7 +12,7 @@ const Navbar = () => {
   const isActive = (href) => pathname == href;
   return (
     <div className="fixed md:h-[70px] h-[80px] top-0 left-0 w-full z-[99] px-[3%] md:px-[3%] flex gap-4 justify-between items-center">
-      <Link href="/">
+      <Link href="/store">
         <Image
           src="/images/Logo2.png"
           width={600}

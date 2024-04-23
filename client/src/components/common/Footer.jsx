@@ -17,7 +17,7 @@ const Footer = ({ bg }) => {
             src="/images/LOGO2.png"
             width={500}
             height={500}
-            className="w-[300px] h-auto"
+            className="w-[300px] h-[60px]"
           />
 
           <p>For the Love of Superbikes</p>
