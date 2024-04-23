@@ -1,6 +1,6 @@
 "use server"
 // Define your Strapi API URL
-const apiUrl = 'https://dashboard.thesuperbikeproject.com'; // Change this to your Strapi server URL
+const apiUrl = 'https://dashboard.netgarage.in'; // Change this to your Strapi server URL
 
 
 export const fetchListings = async () => {
