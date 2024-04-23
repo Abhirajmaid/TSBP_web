@@ -108,7 +108,7 @@ export default function SellerReg() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
+            <h2 className="text-base font-semibold leading-7 text-gray-800">
               Basic Details
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
