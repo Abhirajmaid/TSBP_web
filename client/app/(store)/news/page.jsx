@@ -1,8 +1,21 @@
+"use client";
 import { NewsCard } from "@src/components/common";
 import { BlogsData } from "@src/data/data";
-import React from "react";
+import { fetchNews } from "@src/lib/actions/news.action";
+import React, { useEffect, useState } from "react";
 
 const page = () => {
+  const [newsData, setNewsData] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const { data } = await fetchNews();
+    setNewsData(data);
+  };
+  console.log(newsData);
   return (
     <div className="flex flex-col">
       <h1 className="text-[65px] font-bold mb-6 text-center">NEWS</h1>
@@ -11,13 +24,19 @@ const page = () => {
         augue. Ornare
       </p>
       <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
-        {BlogsData?.map((item, i) => {
-          return (
-            <div className="w-[32%]" key={i}>
-              <NewsCard {...item} key={i} />
-            </div>
-          );
-        })}
+        {newsData?.length == 0 ? (
+          <h1 className="font-bold text-[36px] text-center">
+            No News Available...
+          </h1>
+        ) : (
+          newsData?.map((item, i) => {
+            return (
+              <div className="w-[32%]" key={i}>
+                <NewsCard {...item.attributes} key={i} />
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,11 @@
 import { ContactForm, Faqs } from "@src/components/contact";
 import React from "react";
 
+export const metadata = {
+  title: "Contact Us",
+  description: "Contact NetGarage Today for your Superbike!",
+};
+
 const page = () => {
   return (
     <>

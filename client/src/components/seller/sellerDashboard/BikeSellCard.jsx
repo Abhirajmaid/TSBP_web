@@ -15,7 +15,7 @@ const BikeSellCard = ({
   bike_image,
   year,
   location,
-  kms,
+  km_ridden,
   owner,
   bs,
   emi,
@@ -65,7 +65,7 @@ const BikeSellCard = ({
         </span>
         <span className="flex items-center gap-3 text-[0.7vw]">
           <>
-            <Tag tag={`${kms} kms`} />
+            <Tag tag={`${km_ridden} kms`} />
           </>
           <>
             <Tag tag={`${owner} Owner`} />

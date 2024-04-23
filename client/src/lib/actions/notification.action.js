@@ -3,9 +3,9 @@
 const apiUrl = 'http://localhost:1337'; // Change this to your Strapi server URL
 
 
-export const fetchNews = async () => {
+export const fetchNotifications = async () => {
     try {
-        const response = await fetch(`${apiUrl}/api/newss?populate=*`, {
+        const response = await fetch(`${apiUrl}/api/notifications?populate=*`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

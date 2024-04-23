@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -12,26 +12,38 @@ import { FreeMode, Keyboard, Mousewheel } from "swiper/modules";
 
 import { BikesData } from "@src/data/data";
 import { BikeCard } from ".";
+import { fetchListings } from "@src/lib/actions/listings.action";
 
 const ListingSlider = () => {
+  const [listingsData, setListingsData] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const { data } = await fetchListings();
+    setListingsData(data);
+  };
+
   return (
     <div className="w-full bg-transparent rounded-xl">
       <Swiper
         slidesPerView={5}
         spaceBetween={15}
-        freeMode={true}
+        freeMode={false}
         modules={[FreeMode, Keyboard, Mousewheel]}
-        keyboard={true}
-        mousewheel={true}
-        className="mySwiper h-auto w-full !overflow-visible"
+        keyboard={false}
+        mousewheel={false}
+        className="mySwiper h-auto w-full !overflow-hidden"
       >
-        {BikesData.map((item) => {
+        {listingsData?.map((item) => {
           return (
             <SwiperSlide
-              className="flex items-center justify-center  hover:shadow-xl hover:scale-[1.2]"
+              className="flex items-center justify-center"
               key={item.id}
             >
-              <BikeCard {...item} />
+              <BikeCard {...item.attributes} />
             </SwiperSlide>
           );
         })}

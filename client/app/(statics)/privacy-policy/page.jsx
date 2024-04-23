@@ -1,5 +1,9 @@
 import React from "react";
 
+export const metadata = {
+  title: "Privacy Policy",
+};
+
 const page = () => {
   return (
     <>

@@ -1,5 +1,9 @@
 import React from "react";
 
+export const metadata = {
+  title: "Terms and Conditions",
+};
+
 const page = () => {
   return (
     <>

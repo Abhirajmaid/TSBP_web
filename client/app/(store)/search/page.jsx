@@ -1,6 +1,7 @@
 "use client";
 import { BikeCard } from "@src/components/common";
 import { BikesData } from "@src/data/data";
+import { fetchListings } from "@src/lib/actions/listings.action";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -24,15 +25,33 @@ const page = () => {
   console.log("BodyType:", bodyType);
   console.log("Colors:", colors);
 
+  const [listingsData, setListingsData] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const { data } = await fetchListings();
+    setListingsData(data);
+  };
+
+  useEffect(() => {}, []);
   return (
     <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
-      {BikesData?.map((item) => {
-        return (
-          <div className="w-[32%]" key={item.id}>
-            <BikeCard {...item} />
-          </div>
-        );
-      })}
+      {listingsData?.length == 0 ? (
+        <h1 className="font-bold text-[36px] text-center">
+          Nothing To show...
+        </h1>
+      ) : (
+        listingsData?.map((item) => {
+          return (
+            <div className="w-[32%]" key={item.id}>
+              <BikeCard {...item.attributes} />
+            </div>
+          );
+        })
+      )}
     </div>
   );
 };

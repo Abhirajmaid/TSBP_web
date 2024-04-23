@@ -14,10 +14,10 @@ const Footer = ({ bg }) => {
       <div className="flex justify-between items-center p-[5%]">
         <div className="flex flex-col gap-8 text-white">
           <Image
-            src="/images/LOGO_footer.png"
+            src="/images/LOGO2.png"
             width={500}
             height={500}
-            className="w-[150px] h-auto"
+            className="w-[300px] h-auto"
           />
 
           <p>For the Love of Superbikes</p>
@@ -76,7 +76,7 @@ const Footer = ({ bg }) => {
         </div>
       </div>
       <div className="text-center text-gray-300 pb-3">
-        All Rights Reserved © The Super Bike Project
+        All Rights Reserved © NETGARAGE
       </div>
     </div>
   );

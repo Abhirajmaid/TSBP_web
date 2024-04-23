@@ -13,20 +13,20 @@ const Tag = ({ tag }) => {
 const BikeCard = ({
   name,
   bike_image,
-  year,
-  location,
-  kms,
+  city,
+  km_ridden,
   owner,
-  bs,
+  manufacturing_year,
   emi,
-  price,
+  bs,
+  expected_price,
   id,
   category,
   special,
 }) => {
   return (
     <Link href={`/listings/${id}`}>
-      <div className="w-full flex flex-col gap-2 h-fit cursor-pointer hover:shadow-2xl hover:scale-[1.05] transition-all bg-white rounded-xl overflow-hidden">
+      <div className="w-full flex flex-col gap-2 h-fit cursor-pointer hover:shadow-2xl transition-all bg-white rounded-xl overflow-hidden">
         <div className="h-[55%]">
           <Image
             src={bike_image}
@@ -39,15 +39,15 @@ const BikeCard = ({
         <div className="flex flex-col gap-5 px-3 pb-4">
           <span className="flex justify-between">
             <h2 className="font-bold text-base">{name}</h2>
-            <p>{year}</p>
+            <p>{manufacturing_year}</p>
           </span>
           <span className="flex items-center gap-1">
             <Icon icon="ep:location" width={20} height={20} />
-            <p>{location}</p>
+            <p>{city}</p>
           </span>
           <span className="flex items-center gap-3 text-[0.7vw]">
             <>
-              <Tag tag={`${kms} kms`} />
+              <Tag tag={`${km_ridden} kms`} />
             </>
             <>
               <Tag tag={`${owner} Owner`} />
@@ -58,7 +58,7 @@ const BikeCard = ({
           </span>
           <span className="flex justify-between text-[#666666] font-bold text-[15px]">
             <p>₹{emi}/month</p>
-            <p>₹{price}</p>
+            <p>₹{expected_price}</p>
           </span>
         </div>
       </div>

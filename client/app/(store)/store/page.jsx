@@ -1,28 +1,16 @@
-"use client";
-import { useClerk, useUser } from "@clerk/nextjs";
 import {
   ListingSlider,
   SectionTitle,
   SellerAdCard,
 } from "@src/components/common";
 import { BikeCat, GearsCat, HomeSwiper } from "@src/components/home";
-import { createUser } from "@src/lib/actions/user.action";
-import React, { useEffect } from "react";
 
-const initialstate = {
-  id: "",
-  emailAddresses: "",
-  imageUrl: "",
-  firstName: "",
-  lastName: "",
-  username: "",
+export const metadata = {
+  title: "Store",
+  description:
+    "Netgarage is India's trusted online marketplace for buying and selling premium pre-owned motorcycles.",
 };
-
 const page = () => {
-  useEffect(() => {
-    // createUser({ firstName: "asdasd", email: "addd@gmail.com" });
-  }, []);
-
   return (
     <div
       className="px-[4%] bg-bg gap-[30px] flex flex-col overflow-hidden"
@@ -31,7 +19,7 @@ const page = () => {
       <BikeCat />
       <HomeSwiper />
       <ListingSlider filter="featured" />
-      <GearsCat />
+      {/* <GearsCat /> */}
       <SectionTitle title="Super Bikes" />
       <ListingSlider filter="super-bikes" />
       <SectionTitle title="Cruiser" />

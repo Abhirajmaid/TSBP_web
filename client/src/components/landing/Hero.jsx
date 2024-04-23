@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col h-screen w-full">
-      <div className="flex justify-between w-full items-center ">
+    <div className="flex flex-col w-full">
+      <div className="flex justify-between h-[105vh] w-full items-center ">
         <div className="flex flex-col gap-6 w-[40%]">
           <h1 className="text-white text-[3.5vw] font-bold leading-[55px]">
             Finding the ride <br /> of your dreams <br /> has never been easier

@@ -42,7 +42,15 @@ const HomeSwiper = () => {
             className="h-full w-full rounded-xl object-cover"
           />
         </SwiperSlide>
-        <SwiperSlide>
+        {/*<SwiperSlide>
+          <Image
+            src="/images/carouselImg.png"
+            width={1000}
+            height={1000}
+            className="h-full w-full rounded-xl"
+          />
+        </SwiperSlide>
+         <SwiperSlide>
           <Image
             src="/images/carouselImg.png"
             width={1000}
@@ -57,15 +65,7 @@ const HomeSwiper = () => {
             height={1000}
             className="h-full w-full rounded-xl"
           />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            src="/images/carouselImg.png"
-            width={1000}
-            height={1000}
-            className="h-full w-full rounded-xl"
-          />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );

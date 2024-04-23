@@ -86,63 +86,21 @@ export const BlogsData = [
 
 export const cities = [
     {
-        label: "Cat",
-        value: "cat",
+        label: "Pune",
+        value: "pune",
         description: "The second most popular pet in the world",
     },
     {
-        label: "Dog",
-        value: "dog",
+        label: "Mumbai",
+        value: "mumbai",
         description: "The most popular pet in the world",
     },
     {
-        label: "Elephant",
-        value: "elephant",
+        label: "Ahemadnagar",
+        value: "ahemadnagar",
         description: "The largest land animal",
     },
-    { label: "Lion", value: "lion", description: "The king of the jungle" },
-    { label: "Tiger", value: "tiger", description: "The largest cat species" },
-    {
-        label: "Giraffe",
-        value: "giraffe",
-        description: "The tallest land animal",
-    },
-    {
-        label: "Dolphin",
-        value: "dolphin",
-        description: "A widely distributed and diverse group of aquatic mammals",
-    },
-    {
-        label: "Penguin",
-        value: "penguin",
-        description: "A group of aquatic flightless birds",
-    },
-    {
-        label: "Zebra",
-        value: "zebra",
-        description: "A several species of African equids",
-    },
-    {
-        label: "Shark",
-        value: "shark",
-        description:
-            "A group of elasmobranch fish characterized by a cartilaginous skeleton",
-    },
-    {
-        label: "Whale",
-        value: "whale",
-        description: "Diverse group of fully aquatic placental marine mammals",
-    },
-    {
-        label: "Otter",
-        value: "otter",
-        description: "A carnivorous mammal in the subfamily Lutrinae",
-    },
-    {
-        label: "Crocodile",
-        value: "crocodile",
-        description: "A large semiaquatic reptile",
-    },
+
 ];
 
 export const bikesCat = [
@@ -328,53 +286,53 @@ export const Gears = [
 export const faqs = [
     {
         id: 1,
-        question: "What types of living spaces do you offer?",
+        question: "What makes Netgarage's pre-owned motorcycles different?",
         response:
-            "We offer a range of living solutions tailored for students, including rooms, flats, PGs, and hostels, all equipped with essential amenities, ensuring comfort and convenience.",
+            "At Netgarage, we meticulously inspect and refurbish each pre-owned motorcycle to ensure it meets our high standards of quality and performance. Additionally, our bikes come with transparent histories, so you know exactly what you're getting.",
     },
     {
         id: 2,
-        question: "How can I find the perfect living space for me?",
+        question: "How does Netgarage facilitate community engagement among riders?",
         response:
-            "Our platform provides an intuitive search feature that allows you to filter and discover your ideal living space based on your preferences such as location, budget, and amenities.",
+            "Netgarage provides various avenues for riders to connect, including online forums, local meet-ups, and organized rides. We also host events and workshops geared towards fostering camaraderie and sharing experiences within the motorcycle community.",
     },
     {
         id: 3,
-        question: "Can you assist in finding compatible roommates?",
+        question: "Can I sell my own motorcycle on Netgarage?",
         response:
-            "Yes, we understand the importance of having compatible roommates. Our expert team can help match you with suitable roommates based on your preferences and profiles.",
+            "Absolutely! Netgarage offers a platform for individuals to sell their pre-owned motorcycles. Simply create an account, upload details and photos of your bike, and reach potential buyers who appreciate the value of a well-maintained motorcycle.",
     },
     {
         id: 4,
-        question: "What amenities are included in the living spaces you offer?",
+        question: "What kind of support does Netgarage offer after purchasing a motorcycle?",
         response:
-            "Our living spaces come with a range of amenities, which may include essentials like Wi-Fi, laundry facilities, security, and more. You can find detailed information about amenities on our platform.",
+            "We're committed to ensuring your satisfaction even after you've made your purchase. Netgarage provides support services such as maintenance tips, troubleshooting advice, and access to trusted mechanics and service centers in your area.",
     },
     {
         id: 5,
-        question: "What will I get in Aashray Premium ?",
+        question: "Are there financing options available for purchasing a motorcycle on Netgarage?",
         response:
-            "Premium service gives you access to all information on Flats, Hostels, and PG's along with a physical visit , as well as complete access to sections of roommates, explore nearby, mess menu , and receive numerous interesting offers and discounts on exclusive amenities.",
+            "Yes, Netgarage partners with reputable financial institutions to offer financing options for qualified buyers. Whether you're looking for a loan or leasing options, we can help you find a payment plan that fits your budget and riding aspirations.",
     },
 ];
 
 export const aboutData = [
     {
         id: 1,
-        title: "Who Are We?",
-        text: "Born out of a shared love for the open road and the thrill of two-wheeled adventures, we've created a haven for motorcycle enthusiasts like you. Our carefully curated marketplace",
+        title: "Premium Pre-Owned Motorcycles",
+        text: "At Netgarage, we curate a selection of premium pre-owned motorcycles that are ready to hit the road again. Each bike has a story to tell and awaits its next adventure with a new rider. 'Pre- owned' here doesn't mean any less awesome; it means a chance for epic memories to be created with you at the helm.",
         img: "/images/about.png",
     },
     {
         id: 2,
-        title: "Who Are We?",
-        text: "Born out of a shared love for the open road and the thrill of two-wheeled adventures, we've created a haven for motorcycle enthusiasts like you. Our carefully curated marketplace",
+        title: "Thriving Community of Riders",
+        text: "We're more than just a platform; we're a thriving community of passionate riders. Join us to connect with fellow motorcycle enthusiasts, share experiences, and fuel each other's next adventure. Whether you're a seasoned rider or a curious newcomer, Netgarage welcomes you with open arms (and open helmets) to join the ride.",
         img: "/images/about.png",
     },
     {
         id: 3,
-        title: "Who Are We?",
-        text: "Born out of a shared love for the open road and the thrill of two-wheeled adventures, we've created a haven for motorcycle enthusiasts like you. Our carefully curated marketplace",
+        title: "Connecting Dreams and Riding Buddies",
+        text: "Beyond finding your dream motorcycle, Netgarage is about connecting you with your dream riding buddies. We believe that the camaraderie among riders enhances the thrill of the journey. Let us be your gateway to not just a bike, but a community that shares your passion for the open road.",
         img: "/images/about.png",
     },
 ];

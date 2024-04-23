@@ -14,11 +14,11 @@ const Navbar = () => {
     <div className="fixed md:h-[70px] h-[80px] top-0 left-0 w-full z-[99] px-[3%] md:px-[3%] flex gap-4 justify-between items-center">
       <Link href="/">
         <Image
-          src="/images/Logo + Wordmark Horizontal(white).png"
+          src="/images/Logo2.png"
           width={600}
           height={700}
           alt="The SuperBike Project"
-          className="h-[45px] w-[240px] overflow-hidden"
+          className="h-[40px] w-[200px] overflow-hidden"
         />
       </Link>
       <div className="flex items-center gap-5">

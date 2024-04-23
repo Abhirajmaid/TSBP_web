@@ -3,9 +3,9 @@
 const apiUrl = 'http://localhost:1337'; // Change this to your Strapi server URL
 
 
-export const fetchListing = async (userId) => {
+export const fetchListings = async () => {
     try {
-        const response = await fetch(`${apiUrl}/api/client-users/${userId}`, {
+        const response = await fetch(`${apiUrl}/api/bike-listings?populate=*`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

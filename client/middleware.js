@@ -7,6 +7,7 @@ export default authMiddleware({
         '/store',
         '/search',
         '/contact-us',
+        '/about-us',
         '/listings',
         '/listings/:id',
         '/news',

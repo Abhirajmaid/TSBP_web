@@ -972,6 +972,66 @@ export interface ApiClientUserClientUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiNewsNews extends Schema.CollectionType {
+  collectionName: 'newss';
+  info: {
+    singularName: 'news';
+    pluralName: 'newss';
+    displayName: 'News';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    news_content: Attribute.RichText;
+    date: Attribute.DateTime;
+    image: Attribute.Media;
+    author: Attribute.String;
+    tags: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::news.news', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::news.news', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications';
+  info: {
+    singularName: 'notification';
+    pluralName: 'notifications';
+    displayName: 'Notification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Notify: Attribute.String;
+    urgent: Attribute.Boolean;
+    Date: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1242,6 +1302,8 @@ declare module '@strapi/types' {
       'api::bike-model.bike-model': ApiBikeModelBikeModel;
       'api::brand-or-company-name.brand-or-company-name': ApiBrandOrCompanyNameBrandOrCompanyName;
       'api::client-user.client-user': ApiClientUserClientUser;
+      'api::news.news': ApiNewsNews;
+      'api::notification.notification': ApiNotificationNotification;
       'api::product.product': ApiProductProduct;
       'api::product-cat.product-cat': ApiProductCatProductCat;
       'api::seller.seller': ApiSellerSeller;

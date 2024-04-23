@@ -21,11 +21,11 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           <Link href="/">
             <Image
-              src="/images/Logo + Wordmark Horizontal(white).png"
+              src="/images/Logo2.png"
               width={240}
               height={300}
               alt="RKChaiwala"
-              className="w-[240px] h-[35px]"
+              className="h-[40px] w-[200px]"
             />
           </Link>
           <div>
@@ -35,7 +35,7 @@ const Navbar = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Pune</SelectLabel>
+                  <SelectLabel>Cities</SelectLabel>
                   {cities.map((city) => {
                     return (
                       <SelectItem

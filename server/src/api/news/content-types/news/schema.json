@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "newss",
+  "info": {
+    "singularName": "news",
+    "pluralName": "newss",
+    "displayName": "News",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "news_content": {
+      "type": "richtext"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "author": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    }
+  }
+}

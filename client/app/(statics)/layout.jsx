@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       <div className={montserrat.className}>
         <Navbar />
         <div className={inter.className}>{children}</div>
-        <Footer />
+        <Footer bg="primary" />
       </div>
     </>
   );
