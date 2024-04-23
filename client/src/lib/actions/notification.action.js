@@ -1,11 +1,11 @@
-
+"use server"
 // Define your Strapi API URL
 const apiUrl = 'https://dashboard.netgarage.in' // Change this to your Strapi server URL'; // Change this to your Strapi server URL
 
 
 export const fetchNotifications = async () => {
     try {
-        const response = await fetch(`https://dashboard.netgarage.in/api/notifications?populate=*`, {
+        const response = await fetch(`${process.env.SERVER_URL}/api/notifications?populate=*`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
