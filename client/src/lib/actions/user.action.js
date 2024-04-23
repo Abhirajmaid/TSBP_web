@@ -1,6 +1,6 @@
 "use server"
 // Define your Strapi API URL
-const apiUrl = 'https://dashboard.thesuperbikeproject.com/'; // Change this to your Strapi server URL
+const apiUrl = 'https://dashboard.thesuperbikeproject.com'; // Change this to your Strapi server URL
 
 // Function to create a user in the Strapi database with authentication
 export const createUser = async (user) => {
