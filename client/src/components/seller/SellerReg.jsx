@@ -5,12 +5,16 @@ import { motion } from "framer-motion";
 import { FormDataSchema } from "@src/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
+import ReactConfetti from "react-confetti";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
 
 const steps = [
   {
     id: "Step 1",
     name: "Personal Information",
-    fields: ["firstName", "lastName", "email"],
+    fields: ["owner", "mobile", "email", "store_name", "gst_no"],
   },
   {
     id: "Step 2",
@@ -24,6 +28,7 @@ export default function SellerReg() {
   const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const delta = currentStep - previousStep;
+  const router = useRouter();
 
   const {
     register,
@@ -36,9 +41,16 @@ export default function SellerReg() {
     resolver: zodResolver(FormDataSchema),
   });
 
+  const redirect = () => {
+    setTimeout(() => {
+      router.push("/seller-login");
+    }, 5000); // Redirect after 3 seconds
+  };
+
   const processForm = (data) => {
     console.log(data);
     reset();
+    redirect();
   };
 
   const next = async () => {
@@ -112,56 +124,57 @@ export default function SellerReg() {
               Basic Details
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              Provide some basic detail about bike!
+              Provide some basic detail about yourself!
             </p>
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="firstName"
+                  htmlFor="owner"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Brand Name
+                  Owner Name
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    id="firstName"
-                    {...register("firstName")}
+                    id="owner"
+                    placeholder="Aditya Mali"
+                    {...register("owner")}
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
                   />
-                  {errors.firstName?.message && (
+                  {errors.owner?.message && (
                     <p className="mt-2 text-sm text-red-400">
-                      {errors.firstName.message}
+                      {errors.owner.message}
                     </p>
                   )}
                 </div>
               </div>
-
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="lastName"
+                  htmlFor="mobile"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Last name
+                  Mobile No.
                 </label>
                 <div className="mt-2">
                   <input
+                    id="mobile"
                     type="text"
-                    id="lastName"
-                    {...register("lastName")}
-                    autoComplete="family-name"
+                    autoComplete="phone"
+                    placeholder="+91 738530XXXX"
+                    {...register("mobile")}
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
                   />
-                  {errors.lastName?.message && (
+                  {errors.mobile?.message && (
                     <p className="mt-2 text-sm text-red-400">
-                      {errors.lastName.message}
+                      {errors.mobile.message}
                     </p>
                   )}
                 </div>
               </div>
 
-              <div className="sm:col-span-4">
+              <div className="sm:col-span-2">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -172,13 +185,58 @@ export default function SellerReg() {
                   <input
                     id="email"
                     type="email"
-                    {...register("email")}
                     autoComplete="email"
+                    placeholder="superbike@gamil.com"
+                    {...register("email")}
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
                   />
                   {errors.email?.message && (
                     <p className="mt-2 text-sm text-red-400">
                       {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="store_name"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Store Name
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    id="store_name"
+                    {...register("store_name")}
+                    placeholder="N G Bikes"
+                    className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
+                  />
+                  {errors.store_name?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.store_name.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="gst_no"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  GSTIN.
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    id="gst_no"
+                    {...register("gst_no")}
+                    placeholder="Enter your GSTIN"
+                    className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
+                  />
+                  {errors.gst_no?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.gst_no.message}
                     </p>
                   )}
                 </div>
@@ -215,9 +273,7 @@ export default function SellerReg() {
                     autoComplete="country-name"
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:none sm:max-w-xs sm:text-sm sm:leading-6"
                   >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
+                    <option>India</option>
                   </select>
                   {errors.country?.message && (
                     <p className="mt-2 text-sm text-red-400">
@@ -324,12 +380,23 @@ export default function SellerReg() {
 
         {currentStep === 2 && (
           <>
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Complete
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              Thank you for your submission.
-            </p>
+            <div className="flex flex-col items-center justify-center h-[46vh]">
+              <h1 className="text-[65px] font-bold text-center mb-8 text-primary">
+                Thank You!
+              </h1>
+              <p className="text-lg text-gray-700 text-center">
+                Your form has been submitted successfully.
+              </p>
+              <p className="text-lg text-gray-700 text-center">
+                You will be redirected shortly.
+              </p>
+              <Link href="/seller-login">
+                <Button className="text-white hover:text-primary_light mt-4">
+                  Go back to Login.
+                </Button>
+              </Link>
+              <ReactConfetti />
+            </div>
           </>
         )}
       </form>

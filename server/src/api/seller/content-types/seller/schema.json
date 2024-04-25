@@ -29,9 +29,6 @@
         "audios"
       ]
     },
-    "address": {
-      "type": "richtext"
-    },
     "city": {
       "type": "string"
     },
@@ -44,8 +41,17 @@
       "target": "api::bike-listing.bike-listing",
       "mappedBy": "seller"
     },
-    "user_id": {
-      "type": "uid"
+    "store_address": {
+      "type": "richtext"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "gst_no": {
+      "type": "biginteger"
+    },
+    "zip": {
+      "type": "string"
     }
   }
 }

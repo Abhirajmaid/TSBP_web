@@ -1123,7 +1123,6 @@ export interface ApiSellerSeller extends Schema.CollectionType {
     email: Attribute.Email;
     mobile: Attribute.BigInteger;
     profile_picture: Attribute.Media;
-    address: Attribute.RichText;
     city: Attribute.String;
     store_name: Attribute.String;
     bike_listings: Attribute.Relation<
@@ -1131,7 +1130,10 @@ export interface ApiSellerSeller extends Schema.CollectionType {
       'oneToMany',
       'api::bike-listing.bike-listing'
     >;
-    user_id: Attribute.UID;
+    store_address: Attribute.RichText;
+    owner: Attribute.String;
+    gst_no: Attribute.BigInteger;
+    zip: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

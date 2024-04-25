@@ -2,11 +2,9 @@
 // Define your Strapi API URL
 const apiUrl = 'https://dashboard.netgarage.in'; // Change this to your Strapi server URL
 
-// Function to create a user in the Strapi database with authentication
-export const createUser = async (user) => {
-    // console.log(user);
+export const createSellerUser = async (user) => {
     try {
-        const response = await fetch(`${process.env.SERVER_URL}/api/client-users`, {
+        const response = await fetch(`${process.env.SERVER_URL}/api/seller`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

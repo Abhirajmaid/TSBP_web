@@ -15,8 +15,9 @@ const Footer = ({ bg }) => {
         <div className="flex flex-col gap-8 text-white">
           <Image
             src="/images/LOGO2.png"
-            width={500}
-            height={500}
+            width={300}
+            height={300}
+            alt="NetGarage"
             className="w-[300px] h-[60px]"
           />
 

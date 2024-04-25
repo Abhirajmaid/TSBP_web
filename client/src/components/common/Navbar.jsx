@@ -37,7 +37,7 @@ const Navbar = () => {
             src="/images/Logo2.png"
             width={300}
             height={100}
-            alt="The SuperBike Project"
+            alt="NetGarage"
             className="h-[40px] w-[200px]"
           />
         </Link>
