@@ -1130,10 +1130,12 @@ export interface ApiSellerSeller extends Schema.CollectionType {
       'oneToMany',
       'api::bike-listing.bike-listing'
     >;
-    store_address: Attribute.RichText;
+    street: Attribute.RichText;
     owner: Attribute.String;
     gst_no: Attribute.BigInteger;
     zip: Attribute.String;
+    state: Attribute.String;
+    password: Attribute.Password;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

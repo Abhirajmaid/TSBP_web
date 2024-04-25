@@ -34,7 +34,7 @@ export const otherLinks = [
     {
         id: 3,
         linkText: "Become a Seller",
-        url: "/seller/dashboard",
+        url: "/seller-login",
     },
     {
         id: 4,

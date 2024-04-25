@@ -9,6 +9,7 @@ import Link from "next/link";
 import ReactConfetti from "react-confetti";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
+import { Icon } from "@iconify/react";
 
 const steps = [
   {
@@ -21,12 +22,18 @@ const steps = [
     name: "Address",
     fields: ["country", "state", "city", "street", "zip"],
   },
-  { id: "Step 3", name: "Complete" },
+  {
+    id: "Step 3",
+    name: "Security",
+    fields: ["password", "confirm_password"],
+  },
+  { id: "Step 4", name: "Complete" },
 ];
 
 export default function SellerReg() {
   const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
   const delta = currentStep - previousStep;
   const router = useRouter();
 
@@ -73,6 +80,10 @@ export default function SellerReg() {
       setPreviousStep(currentStep);
       setCurrentStep((step) => step - 1);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -379,6 +390,71 @@ export default function SellerReg() {
         )}
 
         {currentStep === 2 && (
+          <motion.div
+            initial={{ x: delta >= 0 ? "50%" : "-50%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <h2 className="text-base font-semibold leading-7 text-gray-900">
+              Security Password
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600">
+              Set password required at the time of Login.
+            </p>
+
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Password
+                </label>
+                <div className="mt-2">
+                  <span className="flex justify-between items-center w-full rounded-md border-0 text-gray-900 shadow-sm pr-2 ring-1 ring-gray-300 focus:ring-2 focus:none">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      placeholder="************"
+                      {...register("password")}
+                      autoComplete="password"
+                      className="w-full placeholder:text-gray-400 outline-none sm:text-base sm:leading-6 p-2"
+                    />
+                    <Icon
+                      icon={showPassword ? "mdi:eye-off" : "mdi:eye"}
+                      width={25}
+                      onClick={togglePasswordVisibility}
+                      className="cursor-pointer"
+                    />
+                  </span>
+                  {errors.password?.message && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.password.message}
+                    </p>
+                  )}
+                  <div>
+                    <ul className="flex flex-col gap-1 text-sm list-disc ml-5 mt-7">
+                      <li>Password must not contain Whitespaces.</li>
+                      <li>
+                        Password must have at least one Uppercase Character.
+                      </li>
+                      <li>
+                        Password must have at least one Lowercase Character.
+                      </li>
+                      <li>Password must contain at least one Digit.</li>
+                      <li>
+                        Password must contain at least one Special Symbol.
+                      </li>
+                      <li>Password must be 8-14 Characters Long.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {currentStep === 3 && (
           <>
             <div className="flex flex-col items-center justify-center h-[46vh]">
               <h1 className="text-[65px] font-bold text-center mb-8 text-primary">

@@ -41,7 +41,7 @@
       "target": "api::bike-listing.bike-listing",
       "mappedBy": "seller"
     },
-    "store_address": {
+    "street": {
       "type": "richtext"
     },
     "owner": {
@@ -52,6 +52,12 @@
     },
     "zip": {
       "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
     }
   }
 }

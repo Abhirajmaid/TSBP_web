@@ -10,7 +10,7 @@ const SellerAdCard = () => {
         <h2 className="text-[82px] leading-[80px] text-white font-extrabold">
           Become Seller <br /> Today!
         </h2>
-        <Link href="/seller/dashboard">
+        <Link href="/seller-login">
           <Button size="lg">Click Here &rarr;</Button>
         </Link>
       </div>
