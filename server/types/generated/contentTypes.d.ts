@@ -1132,10 +1132,11 @@ export interface ApiSellerSeller extends Schema.CollectionType {
     >;
     street: Attribute.RichText;
     owner: Attribute.String;
-    gst_no: Attribute.BigInteger;
     zip: Attribute.String;
     state: Attribute.String;
-    password: Attribute.Password;
+    gst_no: Attribute.String;
+    password: Attribute.String;
+    country: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

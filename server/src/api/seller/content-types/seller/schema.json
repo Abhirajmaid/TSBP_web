@@ -47,17 +47,20 @@
     "owner": {
       "type": "string"
     },
-    "gst_no": {
-      "type": "biginteger"
-    },
     "zip": {
       "type": "string"
     },
     "state": {
       "type": "string"
     },
+    "gst_no": {
+      "type": "string"
+    },
     "password": {
-      "type": "password"
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
     }
   }
 }

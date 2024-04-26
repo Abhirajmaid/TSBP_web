@@ -10,6 +10,8 @@ import ReactConfetti from "react-confetti";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Icon } from "@iconify/react";
+import { Toast } from "@src/context/ToastContex";
+import { createSellerUser } from "@src/lib/actions/user.action";
 
 const steps = [
   {
@@ -25,7 +27,7 @@ const steps = [
   {
     id: "Step 3",
     name: "Security",
-    fields: ["password", "confirm_password"],
+    fields: ["password"],
   },
   { id: "Step 4", name: "Complete" },
 ];
@@ -36,6 +38,7 @@ export default function SellerReg() {
   const [showPassword, setShowPassword] = useState(false);
   const delta = currentStep - previousStep;
   const router = useRouter();
+  const { warn, success, error } = Toast();
 
   const {
     register,
@@ -56,8 +59,15 @@ export default function SellerReg() {
 
   const processForm = (data) => {
     console.log(data);
+    try {
+      createSellerUser(data);
+      success("Seller Registered!");
+      redirect();
+    } catch (e) {
+      warn(e);
+      error("Somthing Went Wrong");
+    }
     reset();
-    redirect();
   };
 
   const next = async () => {

@@ -1,23 +1,35 @@
 "use client";
 import { Toast } from "@src/context/ToastContex";
+import { fetchSellerUser } from "@src/lib/actions/user.action";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SellerLogin = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [issue, setIssue] = useState(false);
+  const [user, setUser] = useState([]);
+  const { success, error, warn } = Toast();
 
-  const { success, error } = Toast();
+  useEffect(() => {
+    console.log("User:", user);
+  }, [user]);
+
+  const fetchUser = (email, password) => {
+    console.log(email);
+    const { data } = fetchSellerUser(email, password);
+    setUser(data);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username == "" || password == "") {
+    if (email == "" || password == "") {
       error("Fields are Empty.");
       setIssue(true);
     } else {
-      // You can add your login logic here
-      console.log("Username:", username);
-      console.log("Password:", password);
+      setIssue(false);
+      fetchUser(email, password);
+      warn("Fetching...");
     }
   };
 
@@ -29,7 +41,7 @@ const SellerLogin = () => {
           <p className="text-sm mt-4 text-primary">
             If you are already a member, easily log in
           </p>
-
+          {/* {user[0] ? <p>Loaded</p> : <p>Loading...</p>} */}
           <form
             action=""
             className="flex flex-col gap-4"
@@ -39,11 +51,11 @@ const SellerLogin = () => {
               className={`p-2 rounded-xl mt-8 border w-full ${
                 issue ? "border-red-500" : ""
               }`}
-              type="text"
-              name="username"
-              placeholder="username (shop name)"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              name="email"
+              placeholder="johndoe@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <div className="relative">
               <input
