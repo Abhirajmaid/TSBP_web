@@ -16,7 +16,12 @@ import {
   SelectValue,
 } from "@src/components/ui/select";
 import { useState } from "react";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  OrganizationSwitcher,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState();
@@ -118,6 +123,7 @@ const Navbar = () => {
               </Button>
             </Link>
           </SignedOut>
+          {/* <OrganizationSwitcher /> */}
         </div>
       </div>
     </>
