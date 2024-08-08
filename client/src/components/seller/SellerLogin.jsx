@@ -11,15 +11,15 @@ const SellerLogin = () => {
   const [user, setUser] = useState([]);
   const { success, error, warn } = Toast();
 
-  useEffect(() => {
-    console.log("User:", user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log("User:", user);
+  // }, [user]);
 
-  const fetchUser = (email, password) => {
-    console.log(email);
-    const { data } = fetchSellerUser(email, password);
-    setUser(data);
-  };
+  // const fetchUser = (email, password) => {
+  //   console.log(email);
+  //   const { data } = fetchSellerUser(email, password);
+  //   setUser(data);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const SellerLogin = () => {
       setIssue(true);
     } else {
       setIssue(false);
-      fetchUser(email, password);
+      // fetchUser(email, password);
       warn("Fetching...");
     }
   };

@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Icon } from "@iconify/react";
 import { Toast } from "@src/context/ToastContex";
-import { createSellerUser } from "@src/lib/actions/user.action";
+// import { createSellerUser } from "@src/lib/actions/user.action";
 
 const steps = [
   {
@@ -60,7 +60,7 @@ export default function SellerReg() {
   const processForm = (data) => {
     console.log(data);
     try {
-      createSellerUser(data);
+      // createSellerUser(data);
       success("Seller Registered!");
       redirect();
     } catch (e) {
