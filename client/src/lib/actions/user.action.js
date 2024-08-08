@@ -50,3 +50,26 @@ export const fetchSellerUser = async (email, password) => {
         return null;
     }
 }
+export const fetchUser = async (email, password) => {
+    try {
+        const response = await fetch(`${process.env.SERVER_URL}/api/sellers?populate=*&filters[email][$eq]=${email}&filters[password][$eq]=${password}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.BEARER_TOKEN}`,
+            },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to fetch user');
+        }
+
+        console.log('User fetched successfully:', data);
+        return data;
+    } catch (error) {
+        console.error('Error fetching user:', error.message);
+        return null;
+    }
+}
