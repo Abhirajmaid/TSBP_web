@@ -25,29 +25,29 @@ const page = () => {
   console.log("BodyType:", bodyType);
   console.log("Colors:", colors);
 
-  const [listingsData, setListingsData] = useState(null);
+  // const [listingsData, setListingsData] = useState(null);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    const { data } = await fetchListings();
-    setListingsData(data);
-  };
+  // const fetchData = async () => {
+  //   const { data } = await fetchListings();
+  //   setListingsData(data);
+  // };
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
   return (
     <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
-      {listingsData?.length == 0 ? (
+      {BikesData?.length == 0 ? (
         <h1 className="font-bold text-[36px] text-center">
           Nothing To show...
         </h1>
       ) : (
-        listingsData?.map((item) => {
+        BikesData?.map((item) => {
           return (
             <div className="w-[32%]" key={item.id}>
-              <BikeCard {...item.attributes} />
+              <BikeCard {...item} />
             </div>
           );
         })

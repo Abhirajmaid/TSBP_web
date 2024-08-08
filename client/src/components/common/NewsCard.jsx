@@ -36,7 +36,7 @@ const NewsCard = ({ image, title, id, tags, text }) => {
           </span>
           <span>
             <p>
-              {news_content.substring(0, 100)}...
+              {text.substring(0, 100)}...
               <br />
               <Link href={`/news/${id}`}>
                 <span className="btn font-bold cursor-pointer">

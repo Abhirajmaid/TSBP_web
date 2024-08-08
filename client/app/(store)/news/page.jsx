@@ -5,17 +5,17 @@ import { fetchNews } from "@src/lib/actions/news.action";
 import React, { useEffect, useState } from "react";
 
 const page = () => {
-  const [newsData, setNewsData] = useState(null);
+  // const [newsData, setNewsData] = useState(null);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    const { data } = await fetchNews();
-    setNewsData(data);
-  };
-  console.log(newsData);
+  // const fetchData = async () => {
+  //   const { data } = await fetchNews();
+  //   setNewsData(data);
+  // };
+  // console.log(newsData);
   return (
     <div className="flex flex-col">
       <h1 className="text-[65px] font-bold mb-6 text-center">NEWS</h1>
@@ -24,15 +24,15 @@ const page = () => {
         Netgarage announcements on our News page.
       </p>
       <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
-        {newsData?.length == 0 ? (
+        {BlogsData?.length == 0 ? (
           <h1 className="font-bold text-[36px] text-center">
             No News Available...
           </h1>
         ) : (
-          newsData?.map((item, i) => {
+          BlogsData?.map((item, i) => {
             return (
               <div className="w-[32%]" key={i}>
-                <NewsCard {...item.attributes} key={i} />
+                <NewsCard {...item} key={i} />
               </div>
             );
           })

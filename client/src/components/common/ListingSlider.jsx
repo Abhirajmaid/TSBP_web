@@ -15,16 +15,16 @@ import { BikeCard } from ".";
 import { fetchListings } from "@src/lib/actions/listings.action";
 
 const ListingSlider = () => {
-  const [listingsData, setListingsData] = useState(null);
+  // const [listingsData, setListingsData] = useState(null);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const fetchData = async () => {
-    const { data } = await fetchListings();
-    setListingsData(data);
-  };
+  // const fetchData = async () => {
+  //   const { data } = await fetchListings();
+  //   setListingsData(data);
+  // };
 
   return (
     <div className="w-full bg-transparent rounded-xl">
@@ -37,13 +37,13 @@ const ListingSlider = () => {
         mousewheel={false}
         className="mySwiper h-auto w-full !overflow-hidden"
       >
-        {listingsData?.map((item) => {
+        {BikesData?.map((item) => {
           return (
             <SwiperSlide
               className="flex items-center justify-center"
               key={item.id}
             >
-              <BikeCard {...item.attributes} />
+              <BikeCard {...item} />
             </SwiperSlide>
           );
         })}

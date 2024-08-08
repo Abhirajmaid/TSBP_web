@@ -14,12 +14,16 @@ const BikeCard = ({
   name,
   bike_image,
   city,
+  location,
+  year,
   km_ridden,
+  kms,
   owner,
   manufacturing_year,
   emi,
   bs,
   expected_price,
+  price,
   id,
   category,
   special,
@@ -39,15 +43,15 @@ const BikeCard = ({
         <div className="flex flex-col gap-5 px-3 pb-4">
           <span className="flex justify-between">
             <h2 className="font-bold text-base">{name}</h2>
-            <p>{manufacturing_year}</p>
+            <p>{year}</p>
           </span>
           <span className="flex items-center gap-1">
             <Icon icon="ep:location" width={20} height={20} />
-            <p>{city}</p>
+            <p>{location}</p>
           </span>
           <span className="flex items-center gap-3 text-[0.7vw]">
             <>
-              <Tag tag={`${km_ridden} kms`} />
+              <Tag tag={`${kms} kms`} />
             </>
             <>
               <Tag tag={`${owner} Owner`} />
@@ -56,9 +60,9 @@ const BikeCard = ({
               <Tag tag={bs} />
             </>
           </span>
-          <span className="flex justify-between text-[#666666] font-bold text-[15px]">
-            <p>₹{emi}/month</p>
-            <p>₹{expected_price}</p>
+          <span className="flex flex-col justify-between text-[#666666] font-bold text-[15px]">
+            <p>₹{price}</p>
+            <p>EMI option: ₹{emi}/month</p>
           </span>
         </div>
       </div>
