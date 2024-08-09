@@ -33,12 +33,6 @@
     "colour": {
       "type": "string"
     },
-    "bike_model": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::bike-model.bike-model",
-      "inversedBy": "bike_listing"
-    },
     "brand_or_company_name": {
       "type": "relation",
       "relation": "oneToOne",
@@ -50,6 +44,18 @@
       "relation": "manyToOne",
       "target": "api::seller.seller",
       "inversedBy": "bike_listings"
+    },
+    "bike_model": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bike-model.bike-model",
+      "inversedBy": "bike_listing"
+    },
+    "variant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::variant.variant",
+      "inversedBy": "bike_listing"
     }
   }
 }

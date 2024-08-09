@@ -807,11 +807,6 @@ export interface ApiBikeListingBikeListing extends Schema.CollectionType {
     owner_name: Attribute.String;
     registration: Attribute.String;
     colour: Attribute.String;
-    bike_model: Attribute.Relation<
-      'api::bike-listing.bike-listing',
-      'manyToOne',
-      'api::bike-model.bike-model'
-    >;
     brand_or_company_name: Attribute.Relation<
       'api::bike-listing.bike-listing',
       'oneToOne',
@@ -821,6 +816,16 @@ export interface ApiBikeListingBikeListing extends Schema.CollectionType {
       'api::bike-listing.bike-listing',
       'manyToOne',
       'api::seller.seller'
+    >;
+    bike_model: Attribute.Relation<
+      'api::bike-listing.bike-listing',
+      'oneToOne',
+      'api::bike-model.bike-model'
+    >;
+    variant: Attribute.Relation<
+      'api::bike-listing.bike-listing',
+      'oneToOne',
+      'api::variant.variant'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -854,21 +859,21 @@ export interface ApiBikeModelBikeModel extends Schema.CollectionType {
   attributes: {
     model_name: Attribute.String;
     no_of_variants: Attribute.Integer;
-    brand_or_company_name: Attribute.Relation<
-      'api::bike-model.bike-model',
-      'manyToOne',
-      'api::brand-or-company-name.brand-or-company-name'
-    >;
     variants: Attribute.Relation<
       'api::bike-model.bike-model',
-      'manyToMany',
+      'oneToMany',
       'api::variant.variant'
     >;
     year: Attribute.BigInteger;
     bike_listing: Attribute.Relation<
       'api::bike-model.bike-model',
-      'oneToMany',
+      'oneToOne',
       'api::bike-listing.bike-listing'
+    >;
+    brand_or_company_name: Attribute.Relation<
+      'api::bike-model.bike-model',
+      'manyToOne',
+      'api::brand-or-company-name.brand-or-company-name'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -895,26 +900,22 @@ export interface ApiBrandOrCompanyNameBrandOrCompanyName
     singularName: 'brand-or-company-name';
     pluralName: 'brand-or-company-names';
     displayName: 'Brand or Company name';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
-    bike_models: Attribute.Relation<
-      'api::brand-or-company-name.brand-or-company-name',
-      'oneToMany',
-      'api::bike-model.bike-model'
-    >;
-    variants: Attribute.Relation<
-      'api::brand-or-company-name.brand-or-company-name',
-      'oneToMany',
-      'api::variant.variant'
-    >;
     bike_listing: Attribute.Relation<
       'api::brand-or-company-name.brand-or-company-name',
       'oneToOne',
       'api::bike-listing.bike-listing'
+    >;
+    bike_models: Attribute.Relation<
+      'api::brand-or-company-name.brand-or-company-name',
+      'oneToMany',
+      'api::bike-model.bike-model'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1255,17 +1256,17 @@ export interface ApiVariantVariant extends Schema.CollectionType {
     pillion_footrest: Attribute.String;
     additional_features: Attribute.String;
     compression_ratio: Attribute.String;
-    brand_or_company_name: Attribute.Relation<
-      'api::variant.variant',
-      'manyToOne',
-      'api::brand-or-company-name.brand-or-company-name'
-    >;
     overall_width: Attribute.Decimal;
     stroke: Attribute.Decimal;
-    bike_models: Attribute.Relation<
+    bike_model: Attribute.Relation<
       'api::variant.variant',
-      'manyToMany',
+      'manyToOne',
       'api::bike-model.bike-model'
+    >;
+    bike_listing: Attribute.Relation<
+      'api::variant.variant',
+      'oneToOne',
+      'api::bike-listing.bike-listing'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

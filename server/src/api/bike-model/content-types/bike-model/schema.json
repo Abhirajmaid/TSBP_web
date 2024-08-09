@@ -18,26 +18,26 @@
     "no_of_variants": {
       "type": "integer"
     },
-    "brand_or_company_name": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::brand-or-company-name.brand-or-company-name",
-      "inversedBy": "bike_models"
-    },
     "variants": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::variant.variant",
-      "mappedBy": "bike_models"
+      "mappedBy": "bike_model"
     },
     "year": {
       "type": "biginteger"
     },
     "bike_listing": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::bike-listing.bike-listing",
       "mappedBy": "bike_model"
+    },
+    "brand_or_company_name": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand-or-company-name.brand-or-company-name",
+      "inversedBy": "bike_models"
     }
   }
 }

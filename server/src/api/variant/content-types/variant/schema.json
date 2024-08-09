@@ -276,23 +276,23 @@
     "compression_ratio": {
       "type": "string"
     },
-    "brand_or_company_name": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::brand-or-company-name.brand-or-company-name",
-      "inversedBy": "variants"
-    },
     "overall_width": {
       "type": "decimal"
     },
     "stroke": {
       "type": "decimal"
     },
-    "bike_models": {
+    "bike_model": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::bike-model.bike-model",
       "inversedBy": "variants"
+    },
+    "bike_listing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bike-listing.bike-listing",
+      "mappedBy": "variant"
     }
   }
 }
