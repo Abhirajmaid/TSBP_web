@@ -122,7 +122,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex gap-5 items-center">
-          <Link href="/seller-login">
+          <Link href="/seller/dashboard">
             <Button className="font-semibold text-[1vw] bg-white/15 hover:bg-white/30">
               Sell Your Bike
             </Button>

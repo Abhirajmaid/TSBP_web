@@ -5,7 +5,6 @@ import {
   Notification,
 } from "@src/components/seller/sellerDashboard";
 import { Toast } from "@src/context/ToastContex";
-import { BikesData } from "@src/data/data";
 import sellerAction from "@src/lib/actions/seller.action";
 import userAction from "@src/lib/actions/user.action";
 import Link from "next/link";
@@ -32,7 +31,6 @@ const page = () => {
       .fetchLoggedInUser(token)
       .then((resp) => {
         setUser(resp.data);
-        console.log(resp.data);
       })
       .catch((e) => {
         console.log(e);
@@ -46,12 +44,9 @@ const page = () => {
     const user_email = user?.email; // Get user's mail
     sellerAction.getSellerByEmail(token, user_email).then((resp) => {
       setSeller(resp.data.data);
-      console.log("seller", resp.data.data);
       setListings(resp?.data?.data[0]?.attributes?.bike_listing?.data);
     });
   };
-
-  console.log("Listings:", listings);
 
   return (
     <div className="px-[4%] my-[100px]">

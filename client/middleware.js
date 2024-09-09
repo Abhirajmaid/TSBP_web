@@ -24,5 +24,5 @@ export function middleware(req) {
 
 // Define paths that require protection
 export const config = {
-    matcher: ['/seller', '/user-profile'],
+    matcher: ['/seller/', '/user-profile/', '/seller/dashboard/'],
 };

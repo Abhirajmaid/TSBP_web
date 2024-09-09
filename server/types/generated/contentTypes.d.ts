@@ -996,7 +996,7 @@ export interface ApiNotificationNotification extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Notify: Attribute.String;
+    notify: Attribute.String;
     urgent: Attribute.Boolean;
     Date: Attribute.DateTime;
     createdAt: Attribute.DateTime;

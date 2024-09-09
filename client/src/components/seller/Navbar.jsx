@@ -24,8 +24,10 @@ import {
 import { useEffect, useState } from "react";
 import { deleteCookie, hasCookie } from "cookies-next";
 import { Icon } from "@iconify/react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {

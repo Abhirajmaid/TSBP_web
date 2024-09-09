@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Notify": {
+    "notify": {
       "type": "string"
     },
     "urgent": {

@@ -1,3 +1,4 @@
+import { montserrat } from "@app/fonts";
 import { Footer } from "@src/components/common";
 import { Navbar } from "@src/components/seller";
 
