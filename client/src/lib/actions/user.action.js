@@ -1,75 +1,66 @@
-"use server"
-// Define your Strapi API URL
-const apiUrl = 'https://dashboard.netgarage.in'; // Change this to your Strapi server URL
+const { default: axios } = require("axios");
 
-export const createSellerUser = async (user) => {
-    try {
-        const response = await fetch(`${process.env.SERVER_URL}/api/sellers`, {
-            method: 'POST',
+const axiosClient = axios.create({
+    baseURL: "http://localhost:1337/api",
+    headers: {
+        "Content-Type": "application/json",
+    },
+});
+
+const registerUser = (data) =>
+    axiosClient.post("/auth/local/register", {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        mobile_number: data.mobile_number,
+    });
+
+const signIn = (data) =>
+    axiosClient.post("/auth/local", {
+        identifier: data.email,
+        password: data.password,
+    });
+
+const fetchLoggedInUser = (token) =>
+    axiosClient.get("/users/me?populate=*", {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+const updateUserDetails = (token, data) =>
+    axiosClient.put(
+        `/users/${data.id}`,
+        {
+            username: data.username,
+            email: data.email,
+            mobile_number: data.mobile_number,
+            password: data.password,
+        },
+        {
             headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+                Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ data: user }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Failed to create user');
         }
+    );
 
-        console.log('User created successfully:', data);
-        return data;
-    } catch (error) {
-        console.error('Error creating user:', error.message);
-        return null;
-    }
-}
-
-export const fetchSellerUser = async (email, password) => {
-    try {
-        const response = await fetch(`${process.env.SERVER_URL}/api/sellers?populate=*&filters[email][$eq]=${email}&filters[password][$eq]=${password}`, {
-            method: 'GET',
+const updateUserRole = (token, userId, roleId) =>
+    axiosClient.put(
+        "/users/" + userId + "?populate=*",
+        {
+            role: roleId,
+        },
+        {
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.BEARER_TOKEN}`,
+                Authorization: `Bearer ${token}`,
             },
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Failed to fetch user');
         }
+    );
 
-        console.log('User fetched successfully:', data);
-        return data;
-    } catch (error) {
-        console.error('Error fetching user:', error.message);
-        return null;
-    }
-}
-export const fetchUser = async (email, password) => {
-    try {
-        const response = await fetch(`${process.env.SERVER_URL}/api/sellers?populate=*&filters[email][$eq]=${email}&filters[password][$eq]=${password}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.BEARER_TOKEN}`,
-            },
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Failed to fetch user');
-        }
-
-        console.log('User fetched successfully:', data);
-        return data;
-    } catch (error) {
-        console.error('Error fetching user:', error.message);
-        return null;
-    }
-}
+export default {
+    registerUser,
+    signIn,
+    fetchLoggedInUser,
+    updateUserDetails,
+    updateUserRole,
+};

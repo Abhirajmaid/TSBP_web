@@ -27,17 +27,41 @@
     "year": {
       "type": "biginteger"
     },
-    "bike_listing": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::bike-listing.bike-listing",
-      "mappedBy": "bike_model"
-    },
     "brand_or_company_name": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::brand-or-company-name.brand-or-company-name",
       "inversedBy": "bike_models"
+    },
+    "img": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "model_name"
+    },
+    "bike_listings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bike-listing.bike-listing",
+      "mappedBy": "bike_model"
+    },
+    "about": {
+      "type": "blocks"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "bike_model"
     }
   }
 }

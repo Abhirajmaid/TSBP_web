@@ -11,20 +11,30 @@ import "swiper/css/free-mode";
 import { FreeMode, Keyboard, Mousewheel } from "swiper/modules";
 
 import { BikesData } from "@src/data/data";
-import { BikeCard } from ".";
-import { fetchListings } from "@src/lib/actions/listings.action";
+import { BikeCard, Loader } from ".";
+import listingsAction from "@src/lib/actions/listings.action";
+import { Toast } from "@src/context/ToastContex";
 
 const ListingSlider = () => {
-  // const [listingsData, setListingsData] = useState(null);
+  const [data, setData] = useState();
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  const { warn } = Toast();
 
-  // const fetchData = async () => {
-  //   const { data } = await fetchListings();
-  //   setListingsData(data);
-  // };
+  useEffect(() => {
+    getListingsList();
+  }, []);
+
+  const getListingsList = () => {
+    listingsAction
+      .fetchListings()
+      .then((resp) => {
+        setData(resp.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        warn(error);
+      });
+  };
 
   return (
     <div className="w-full bg-transparent rounded-xl">
@@ -37,16 +47,22 @@ const ListingSlider = () => {
         mousewheel={false}
         className="mySwiper h-auto w-full !overflow-hidden"
       >
-        {BikesData?.map((item) => {
-          return (
-            <SwiperSlide
-              className="flex items-center justify-center"
-              key={item.id}
-            >
-              <BikeCard {...item} />
-            </SwiperSlide>
-          );
-        })}
+        {data ? (
+          data?.map((item, id) => {
+            return (
+              <SwiperSlide
+                className="flex items-center justify-center"
+                key={id}
+              >
+                <BikeCard data={item} />
+              </SwiperSlide>
+            );
+          })
+        ) : (
+          <div className="w-full rounded-lg h-[200px] flex items-center justify-center">
+            <Loader />
+          </div>
+        )}
       </Swiper>
     </div>
   );

@@ -19,10 +19,10 @@ const page = () => {
       <BikeCat />
       <HomeSwiper />
       <ListingSlider filter="featured" />
-      {/* <GearsCat /> */}
-      <SectionTitle title="Super Bikes" />
+      <GearsCat />
+      <SectionTitle title="Super Bikes" btn="/" />
       <ListingSlider filter="super-bikes" />
-      <SectionTitle title="Cruiser" />
+      <SectionTitle title="Cruiser" btn="/" />
       <ListingSlider filter="cruiser-bikes" />
       <SellerAdCard />
     </div>

@@ -20,6 +20,7 @@ export const navLinks = [
         url: "/events",
     },
 ];
+
 export const otherLinks = [
     {
         id: 1,
@@ -29,7 +30,7 @@ export const otherLinks = [
     {
         id: 2,
         linkText: "Help Center",
-        url: "/help-center",
+        url: "/user-profile/help",
     },
     {
         id: 3,
@@ -42,6 +43,7 @@ export const otherLinks = [
         url: "/ad-partner",
     },
 ];
+
 export const customerLinks = [
     {
         id: 1,
@@ -64,6 +66,7 @@ export const customerLinks = [
         url: "/",
     },
 ];
+
 export const socialLinks = [
     {
         id: 1,
@@ -81,6 +84,7 @@ export const socialLinks = [
         url: "/",
     },
 ];
+
 export const SellersTabList = [
     {
         id: 1,
@@ -111,5 +115,28 @@ export const SellersTabList = [
         linkText: "Account",
         url: "/seller-account",
         icon: "mdi:account-cog-outline",
+    },
+];
+
+export const userAccLinks = [
+    {
+        title: "Profile",
+        icon: "lucide:user-round",
+        href: "/user-profile",
+    },
+    {
+        title: "Favorites",
+        icon: "lucide:heart",
+        href: "/user-profile/favorites",
+    },
+    {
+        title: "Setting",
+        icon: "lucide:settings",
+        href: "/user-profile/setting",
+    },
+    {
+        title: "Help",
+        icon: "lucide:circle-help",
+        href: "/user-profile/help",
     },
 ];

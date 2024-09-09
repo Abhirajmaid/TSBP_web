@@ -15,13 +15,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@src/components/ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  OrganizationSwitcher,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/src/components/ui/dropdown-menu";
+
+import { deleteCookie, hasCookie } from "cookies-next";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState();
@@ -32,6 +36,20 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/search" + "?" + "query=" + searchQuery);
+  };
+
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    if (hasCookie("jwt")) {
+      setIsLogin(true);
+    }
+  }, []);
+
+  const onSignOut = () => {
+    sessionStorage.clear();
+    deleteCookie("jwt");
+    router.push("/sign-in");
   };
 
   return (
@@ -51,7 +69,7 @@ const Navbar = () => {
             <SelectTrigger className="w-[120px] rounded-lg bg-white/10 border-none text-white">
               <SelectValue placeholder="City" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="w-[150px] z-[99]">
               <SelectGroup>
                 <SelectLabel>Pune</SelectLabel>
                 {cities.map((city) => {
@@ -109,21 +127,32 @@ const Navbar = () => {
               Sell Your Bike
             </Button>
           </Link>
-          <SignedIn>
-            <UserButton
-              afterSignOutUrl="/"
-              userProfileMode="navigation"
-              userProfileUrl="/user-profile"
-            />
-          </SignedIn>
-          <SignedOut>
+
+          {isLogin ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex items-center gap-1 cursor-pointer font-semibold bg-white rounded-full p-2">
+                  <Icon icon="lucide:user-round" width={20} />
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[150px] z-[99]">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link href="/user-profile">Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onSignOut()}>
+                  Log Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
             <Link href="/sign-in">
-              <Button className="font-semibold text-[1vw] bg-white/15 hover:bg-white/30">
+              <Button className="font-semibold text-lg border-2 border-[#888888]/50 bg-black/40 hover:bg-white/30">
                 Login
               </Button>
             </Link>
-          </SignedOut>
-          {/* <OrganizationSwitcher /> */}
+          )}
         </div>
       </div>
     </>

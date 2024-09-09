@@ -742,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -771,6 +770,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    seller: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::seller.seller'
+    >;
+    mobile_number: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -809,23 +814,30 @@ export interface ApiBikeListingBikeListing extends Schema.CollectionType {
     colour: Attribute.String;
     brand_or_company_name: Attribute.Relation<
       'api::bike-listing.bike-listing',
-      'oneToOne',
+      'manyToOne',
       'api::brand-or-company-name.brand-or-company-name'
     >;
+    bike_model: Attribute.Relation<
+      'api::bike-listing.bike-listing',
+      'manyToOne',
+      'api::bike-model.bike-model'
+    >;
+    variant: Attribute.Relation<
+      'api::bike-listing.bike-listing',
+      'manyToOne',
+      'api::variant.variant'
+    >;
+    name: Attribute.String;
     seller: Attribute.Relation<
       'api::bike-listing.bike-listing',
       'manyToOne',
       'api::seller.seller'
     >;
-    bike_model: Attribute.Relation<
-      'api::bike-listing.bike-listing',
-      'oneToOne',
-      'api::bike-model.bike-model'
-    >;
-    variant: Attribute.Relation<
-      'api::bike-listing.bike-listing',
-      'oneToOne',
-      'api::variant.variant'
+    img: Attribute.Media;
+    slug: Attribute.UID<'api::bike-listing.bike-listing', 'registration'>;
+    description: Attribute.Text;
+    body_condition: Attribute.Enumeration<
+      ['Scratch on panel', 'Scratch/Broken Headlights']
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -865,15 +877,23 @@ export interface ApiBikeModelBikeModel extends Schema.CollectionType {
       'api::variant.variant'
     >;
     year: Attribute.BigInteger;
-    bike_listing: Attribute.Relation<
-      'api::bike-model.bike-model',
-      'oneToOne',
-      'api::bike-listing.bike-listing'
-    >;
     brand_or_company_name: Attribute.Relation<
       'api::bike-model.bike-model',
       'manyToOne',
       'api::brand-or-company-name.brand-or-company-name'
+    >;
+    img: Attribute.Media;
+    slug: Attribute.UID<'api::bike-model.bike-model', 'model_name'>;
+    bike_listings: Attribute.Relation<
+      'api::bike-model.bike-model',
+      'oneToMany',
+      'api::bike-listing.bike-listing'
+    >;
+    about: Attribute.Blocks;
+    reviews: Attribute.Relation<
+      'api::bike-model.bike-model',
+      'oneToMany',
+      'api::review.review'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -907,16 +927,16 @@ export interface ApiBrandOrCompanyNameBrandOrCompanyName
   };
   attributes: {
     name: Attribute.String;
-    bike_listing: Attribute.Relation<
-      'api::brand-or-company-name.brand-or-company-name',
-      'oneToOne',
-      'api::bike-listing.bike-listing'
-    >;
     bike_models: Attribute.Relation<
       'api::brand-or-company-name.brand-or-company-name',
       'oneToMany',
       'api::bike-model.bike-model'
     >;
+    bike_listings: Attribute.Relation<
+      'api::brand-or-company-name.brand-or-company-name',
+      'oneToMany',
+      'api::bike-listing.bike-listing'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -928,44 +948,6 @@ export interface ApiBrandOrCompanyNameBrandOrCompanyName
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::brand-or-company-name.brand-or-company-name',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiClientUserClientUser extends Schema.CollectionType {
-  collectionName: 'client_users';
-  info: {
-    singularName: 'client-user';
-    pluralName: 'client-users';
-    displayName: 'Client User';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    firstName: Attribute.String;
-    fullName: Attribute.String;
-    user_id: Attribute.UID;
-    seller: Attribute.Boolean;
-    email: Attribute.Email;
-    profile: Attribute.String;
-    lastName: Attribute.String;
-    username: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::client-user.client-user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::client-user.client-user',
       'oneToOne',
       'admin::user'
     > &
@@ -991,6 +973,7 @@ export interface ApiNewsNews extends Schema.CollectionType {
     image: Attribute.Media;
     author: Attribute.String;
     tags: Attribute.JSON;
+    slug: Attribute.UID<'api::news.news', 'title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1006,7 +989,8 @@ export interface ApiNotificationNotification extends Schema.CollectionType {
   info: {
     singularName: 'notification';
     pluralName: 'notifications';
-    displayName: 'Notification';
+    displayName: 'Seller Notification';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1109,28 +1093,63 @@ export interface ApiProductCatProductCat extends Schema.CollectionType {
   };
 }
 
-export interface ApiSellerSeller extends Schema.CollectionType {
-  collectionName: 'sellers';
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
   info: {
-    singularName: 'seller';
-    pluralName: 'sellers';
-    displayName: 'seller';
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'Review';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    email: Attribute.Email;
+    title: Attribute.String;
+    review: Attribute.Text;
+    name: Attribute.String;
+    profile_pic: Attribute.Media;
+    img: Attribute.Media;
+    bike_model: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::bike-model.bike-model'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSellerSeller extends Schema.CollectionType {
+  collectionName: 'sellers';
+  info: {
+    singularName: 'seller';
+    pluralName: 'sellers';
+    displayName: 'Seller';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email & Attribute.Unique;
     mobile: Attribute.BigInteger;
     profile_picture: Attribute.Media;
     city: Attribute.String;
     store_name: Attribute.String;
-    bike_listings: Attribute.Relation<
-      'api::seller.seller',
-      'oneToMany',
-      'api::bike-listing.bike-listing'
-    >;
     street: Attribute.RichText;
     owner: Attribute.String;
     zip: Attribute.String;
@@ -1138,6 +1157,16 @@ export interface ApiSellerSeller extends Schema.CollectionType {
     gst_no: Attribute.String;
     password: Attribute.String;
     country: Attribute.String;
+    bike_listing: Attribute.Relation<
+      'api::seller.seller',
+      'oneToMany',
+      'api::bike-listing.bike-listing'
+    >;
+    user: Attribute.Relation<
+      'api::seller.seller',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1263,9 +1292,9 @@ export interface ApiVariantVariant extends Schema.CollectionType {
       'manyToOne',
       'api::bike-model.bike-model'
     >;
-    bike_listing: Attribute.Relation<
+    bike_listings: Attribute.Relation<
       'api::variant.variant',
-      'oneToOne',
+      'oneToMany',
       'api::bike-listing.bike-listing'
     >;
     createdAt: Attribute.DateTime;
@@ -1307,11 +1336,11 @@ declare module '@strapi/types' {
       'api::bike-listing.bike-listing': ApiBikeListingBikeListing;
       'api::bike-model.bike-model': ApiBikeModelBikeModel;
       'api::brand-or-company-name.brand-or-company-name': ApiBrandOrCompanyNameBrandOrCompanyName;
-      'api::client-user.client-user': ApiClientUserClientUser;
       'api::news.news': ApiNewsNews;
       'api::notification.notification': ApiNotificationNotification;
       'api::product.product': ApiProductProduct;
       'api::product-cat.product-cat': ApiProductCatProductCat;
+      'api::review.review': ApiReviewReview;
       'api::seller.seller': ApiSellerSeller;
       'api::variant.variant': ApiVariantVariant;
     }

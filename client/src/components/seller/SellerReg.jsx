@@ -1,7 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
 import { FormDataSchema } from "@src/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -11,7 +10,9 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Icon } from "@iconify/react";
 import { Toast } from "@src/context/ToastContex";
-// import { createSellerUser } from "@src/lib/actions/user.action";
+import userAction from "@src/lib/actions/user.action";
+import { getCookie } from "cookies-next";
+import sellerAction from "@src/lib/actions/seller.action";
 
 const steps = [
   {
@@ -33,43 +34,42 @@ const steps = [
 ];
 
 export default function SellerReg() {
+  // Setup Hooks
+  //Form Steps
   const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
+
+  // Data States
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState();
+  const [seller, setSeller] = useState();
+
   const delta = currentStep - previousStep;
+
+  // Router Hook
   const router = useRouter();
+
+  // Toast function
   const { warn, success, error } = Toast();
 
+  // useForm Zod
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     trigger,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(FormDataSchema),
   });
 
+  // Redirecting to Seller Dashboard
   const redirect = () => {
     setTimeout(() => {
-      router.push("/seller-login");
-    }, 5000); // Redirect after 3 seconds
+      router.push("/user-profile");
+    }, 5000);
   };
 
-  const processForm = (data) => {
-    console.log(data);
-    try {
-      // createSellerUser(data);
-      success("Seller Registered!");
-      redirect();
-    } catch (e) {
-      warn(e);
-      error("Somthing Went Wrong");
-    }
-    reset();
-  };
-
+  // form next step
   const next = async () => {
     const fields = steps[currentStep].fields;
     const output = await trigger(fields, { shouldFocus: true });
@@ -85,6 +85,7 @@ export default function SellerReg() {
     }
   };
 
+  // form prev step
   const prev = () => {
     if (currentStep > 0) {
       setPreviousStep(currentStep);
@@ -92,8 +93,65 @@ export default function SellerReg() {
     }
   };
 
+  // Password Visible Toggle
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  // Form Submit
+  const processForm = (data) => {
+    try {
+      const token =
+        JSON.parse(sessionStorage.getItem("jwt")) || getCookie("jwt");
+
+      // Step 1: Create seller
+      sellerAction
+        .registerSeller(token, data)
+        .then((resp) => {
+          setSeller(resp.data.data);
+        })
+        .catch((e) => {
+          console.log("Error:", e);
+          error("Something Went Wrong While Seller Registration!");
+        });
+
+      const userId = user?.id; // Get user's ID
+      const sellerId = seller?.id; // Get created seller's ID
+
+      // Step 3: Update the user's role to "seller"
+      userAction
+        .updateUserRole(token, userId, 3)
+        .then((resp) => {
+          success("You are register as seller successfully!");
+        })
+        .catch((e) => {
+          warn(e);
+          error("Something Went Wrong!");
+        });
+
+      redirect();
+    } catch (e) {
+      warn(e);
+      error("Somthing Went Wrong");
+    }
+  };
+
+  // Fetching User
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
+
+  const fetchUserDetails = () => {
+    const token = JSON.parse(sessionStorage.getItem("jwt")) || getCookie("jwt");
+    userAction
+      .fetchLoggedInUser(token)
+      .then((resp) => {
+        setUser(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        warn(error);
+      });
   };
 
   return (
@@ -208,6 +266,8 @@ export default function SellerReg() {
                     type="email"
                     autoComplete="email"
                     placeholder="superbike@gamil.com"
+                    value={user?.email}
+                    readOnly
                     {...register("email")}
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:none sm:text-sm sm:leading-6"
                   />
@@ -476,9 +536,9 @@ export default function SellerReg() {
               <p className="text-lg text-gray-700 text-center">
                 You will be redirected shortly.
               </p>
-              <Link href="/seller-login">
-                <Button className="text-white hover:text-primary_light mt-4">
-                  Go back to Login.
+              <Link href="/user-profile">
+                <Button className="text-white hover:scale-[1.03] mt-4">
+                  Go back to Profile.
                 </Button>
               </Link>
               <ReactConfetti />

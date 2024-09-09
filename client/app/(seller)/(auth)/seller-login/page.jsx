@@ -5,7 +5,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="flex flex-col min-h-screen justify-center items-center relative">
+      <div className="flex flex-col min-h-screen w-full justify-center items-center relative -mb-[60px] -mt-[30px]">
         <Image
           src="https://images.unsplash.com/photo-1637476349345-d8f88e11e573?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           width={1000}

@@ -10,59 +10,46 @@ const Tag = ({ tag }) => {
   );
 };
 
-const BikeCard = ({
-  name,
-  bike_image,
-  city,
-  location,
-  year,
-  km_ridden,
-  kms,
-  owner,
-  manufacturing_year,
-  emi,
-  bs,
-  expected_price,
-  price,
-  id,
-  category,
-  special,
-}) => {
+const BikeCard = ({ data }) => {
   return (
-    <Link href={`/listings/${id}`}>
+    <Link href={`/listings/${data?.attributes?.slug}/${data?.id}`}>
       <div className="w-full flex flex-col gap-2 h-fit cursor-pointer hover:shadow-2xl transition-all bg-white rounded-xl overflow-hidden">
         <div className="h-[55%]">
           <Image
-            src={bike_image}
+            src={data?.attributes?.bike_image || "/images/Bikes/bike3.png"}
             width={500}
             height={500}
             className="h-full w-full object-cover"
             alt="tsbp"
           />
         </div>
-        <div className="flex flex-col gap-5 px-3 pb-4">
+        <div className="flex flex-col gap-4 px-3 pb-4">
           <span className="flex justify-between">
-            <h2 className="font-bold text-base">{name}</h2>
-            <p>{year}</p>
+            <h2 className="font-bold text-base">{data?.attributes?.name}</h2>
+            <p>{data?.attributes?.manufacturing_year}</p>
           </span>
           <span className="flex items-center gap-1">
             <Icon icon="ep:location" width={20} height={20} />
-            <p>{location}</p>
+            <p>{data?.attributes?.city}</p>
           </span>
           <span className="flex items-center gap-3 text-[0.7vw]">
             <>
-              <Tag tag={`${kms} kms`} />
+              <Tag tag={`${data?.attributes?.km_ridden} kms`} />
             </>
             <>
-              <Tag tag={`${owner} Owner`} />
+              <Tag tag={`${data?.attributes?.owner_name} Owner`} />
             </>
             <>
-              <Tag tag={bs} />
+              <Tag tag={data?.attributes?.bs || "BS-6"} />
             </>
           </span>
-          <span className="flex flex-col justify-between text-[#666666] font-bold text-[15px]">
-            <p>₹{price}</p>
-            <p>EMI option: ₹{emi}/month</p>
+          <span className="flex flex-row justify-between text-[#666666] font-semibold text-[15px]">
+            <p className="text-left">
+              Price: ₹{Number(data?.attributes?.expected_price)}
+            </p>
+            <p className="text-right">
+              EMI option: ₹{data?.attributes?.expected_price}/month
+            </p>
           </span>
         </div>
       </div>

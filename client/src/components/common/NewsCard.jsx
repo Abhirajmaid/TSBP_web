@@ -17,7 +17,7 @@ const NewsCard = ({ image, title, id, tags, text }) => {
               width={500}
               height={500}
               className="h-full w-full object-cover cursor-pointer"
-              alt="tsbp"
+              alt="netgarages"
             />
           </Link>
         </div>

@@ -20,13 +20,15 @@ module.exports = {
       colors: {
         bg: "#F2F2F7",
         bg_dark: "#E3E6E6",
+        bg_gray: "#F2F2F7",
         btn_gray: "#E7E7E7",
         primary: "#400094",
         "primary-foreground": "#fff",
         primary_dark: "#2d006d",
         primary_light: "#5e46ac",
         secondary: "#0748A9",
-
+        text_dark: "#121212",
+        text_para: "#5F6D7E",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

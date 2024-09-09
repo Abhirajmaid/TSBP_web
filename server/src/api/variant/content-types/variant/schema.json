@@ -288,9 +288,9 @@
       "target": "api::bike-model.bike-model",
       "inversedBy": "variants"
     },
-    "bike_listing": {
+    "bike_listings": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::bike-listing.bike-listing",
       "mappedBy": "variant"
     }

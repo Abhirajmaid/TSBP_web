@@ -4,7 +4,7 @@
   "info": {
     "singularName": "seller",
     "pluralName": "sellers",
-    "displayName": "seller",
+    "displayName": "Seller",
     "description": ""
   },
   "options": {
@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": false,
+      "unique": true
     },
     "mobile": {
       "type": "biginteger"
@@ -35,12 +37,6 @@
     "store_name": {
       "type": "string"
     },
-    "bike_listings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::bike-listing.bike-listing",
-      "mappedBy": "seller"
-    },
     "street": {
       "type": "richtext"
     },
@@ -61,6 +57,18 @@
     },
     "country": {
       "type": "string"
+    },
+    "bike_listing": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bike-listing.bike-listing",
+      "mappedBy": "seller"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "seller"
     }
   }
 }

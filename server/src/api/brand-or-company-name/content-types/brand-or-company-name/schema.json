@@ -15,16 +15,16 @@
     "name": {
       "type": "string"
     },
-    "bike_listing": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::bike-listing.bike-listing",
-      "mappedBy": "brand_or_company_name"
-    },
     "bike_models": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::bike-model.bike-model",
+      "mappedBy": "brand_or_company_name"
+    },
+    "bike_listings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bike-listing.bike-listing",
       "mappedBy": "brand_or_company_name"
     }
   }

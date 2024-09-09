@@ -35,27 +35,55 @@
     },
     "brand_or_company_name": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::brand-or-company-name.brand-or-company-name",
-      "inversedBy": "bike_listing"
+      "inversedBy": "bike_listings"
+    },
+    "bike_model": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bike-model.bike-model",
+      "inversedBy": "bike_listings"
+    },
+    "variant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::variant.variant",
+      "inversedBy": "bike_listings"
+    },
+    "name": {
+      "type": "string"
     },
     "seller": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::seller.seller",
-      "inversedBy": "bike_listings"
-    },
-    "bike_model": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::bike-model.bike-model",
       "inversedBy": "bike_listing"
     },
-    "variant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::variant.variant",
-      "inversedBy": "bike_listing"
+    "img": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "registration"
+    },
+    "description": {
+      "type": "text"
+    },
+    "body_condition": {
+      "type": "enumeration",
+      "enum": [
+        "Scratch on panel",
+        "Scratch/Broken Headlights"
+      ]
     }
   }
 }

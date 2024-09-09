@@ -9,3 +9,5 @@ export { default as NewsCard } from "./NewsCard";
 export { default as Ad } from "./Ad";
 export { default as Loader } from "./Loader";
 export { default as Testimonial } from "./Testimonial";
+export { default as ProductImages } from "./ProductImages";
+export { default as ConfirmationModal } from "./ConfirmationModal";
