@@ -40,6 +40,14 @@ const getSellerByEmail = (token, email) =>
     });
 
 
+const updateSeller = (token, data) => axiosClient.put("/sellers",
+    { data: data },
+    {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+
 export default {
     registerSeller,
     getSellerByEmail,

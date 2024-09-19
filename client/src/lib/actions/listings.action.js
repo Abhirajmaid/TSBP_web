@@ -19,6 +19,8 @@ const deleteListing = (token, id) => axiosClient.delete('/bike-listings/' + id, 
 
 })
 
+
+
 export default {
     fetchListings,
     getBikeListingById,

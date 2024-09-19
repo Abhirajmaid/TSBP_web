@@ -11,8 +11,8 @@ export const metadata = {
 const page = () => {
   return (
     <div className="-mb-[60px] h-screen min-h-[700px]">
-      {/* <EventsSlider /> */}
-      <ComingSoon />
+      <EventsSlider />
+      {/* <ComingSoon /> */}
     </div>
   );
 };

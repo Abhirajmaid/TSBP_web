@@ -13,7 +13,7 @@ const Tag = ({ tag }) => {
 const BikeCard = ({ data }) => {
   return (
     <Link href={`/listings/${data?.attributes?.slug}/${data?.id}`}>
-      <div className="w-full flex flex-col gap-2 h-fit cursor-pointer hover:shadow-2xl transition-all bg-white rounded-xl overflow-hidden">
+      <div className="w-full flex flex-col gap-2 h-fit cursor-pointer hover:shadow-2xl transition-all bg-white rounded-xl overflow-hidden border">
         <div className="h-[55%]">
           <Image
             src={data?.attributes?.bike_image || "/images/Bikes/bike3.png"}
@@ -45,10 +45,10 @@ const BikeCard = ({ data }) => {
           </span>
           <span className="flex flex-row justify-between text-[#666666] font-semibold text-[15px]">
             <p className="text-left">
-              Price: ₹{Number(data?.attributes?.expected_price)}
+              Price: <br /> ₹{Number(data?.attributes?.expected_price)}
             </p>
             <p className="text-right">
-              EMI option: ₹{data?.attributes?.expected_price}/month
+              EMI option: <br /> ₹{data?.attributes?.expected_price}/month
             </p>
           </span>
         </div>

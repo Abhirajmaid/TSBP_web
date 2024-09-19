@@ -6,7 +6,9 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, actionType }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg w-96">
-        <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
+        <h2 className="text-xl font-bold mb-4">
+          {actionType == "save" ? "Confirm Save" : "Confirm Deletion"}
+        </h2>
         <p className="mb-6">
           {actionType == "save"
             ? "Are you sure you want to save changes?"
