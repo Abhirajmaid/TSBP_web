@@ -42,10 +42,16 @@ const page = () => {
   const getSellerInfo = () => {
     const token = JSON.parse(sessionStorage.getItem("jwt")) || getCookie("jwt");
     const user_email = user?.email; // Get user's mail
-    sellerAction.getSellerByEmail(token, user_email).then((resp) => {
-      setSeller(resp.data.data);
-      setListings(resp?.data?.data[0]?.attributes?.bike_listing?.data);
-    });
+    sellerAction
+      .getSellerByEmail(token, user_email)
+      .then((resp) => {
+        setSeller(resp.data.data);
+        setListings(resp?.data?.data[0]?.attributes?.bike_listing?.data);
+      })
+      .catch((e) => {
+        warn("Something Went Wrong!");
+        error(e);
+      });
   };
 
   return (
