@@ -7,6 +7,7 @@ import {
 import { Toast } from "@src/context/ToastContex";
 import sellerAction from "@src/lib/actions/seller.action";
 import userAction from "@src/lib/actions/user.action";
+import { getCookie } from "cookies-next";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
