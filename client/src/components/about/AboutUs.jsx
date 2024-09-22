@@ -43,6 +43,7 @@ const TextParallaxContent = ({ imgUrl, subheading, heading, children }) => {
         paddingLeft: IMG_PADDING,
         paddingRight: IMG_PADDING,
       }}
+      className="!px-0 md:px-4"
     >
       <div className="relative h-[150vh]">
         <StickyImage imgUrl={imgUrl} />
@@ -114,7 +115,7 @@ const OverlayCopy = ({ subheading, heading }) => {
 };
 
 const Content1 = () => (
-  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:px-4 px-2 pb-24 pt-12 md:grid-cols-12">
     <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
       Personalised assistance, Every step of the way.
     </h2>
@@ -133,7 +134,7 @@ const Content1 = () => (
         customer, first.
       </p>
       <Link href="/contact-us">
-        <Button className="text-[0.8vw] w-[30%] py-7">
+        <Button className="md:text-[0.8vw] text-[12px] min-w-[30%] py-7">
           Learn more <FiArrowUpRight className="inline" />
         </Button>
       </Link>
@@ -141,7 +142,7 @@ const Content1 = () => (
   </div>
 );
 const Content2 = () => (
-  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:px-4 px-2 pb-24 pt-12 md:grid-cols-12">
     <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
       An extensive array of motorcycles, catering to every rider's taste and
       preference.
@@ -160,7 +161,7 @@ const Content2 = () => (
         perfectly matches your style and riding preferences.
       </p>
       <Link href="/contact-us">
-        <Button className="text-[0.8vw] w-[30%] py-7">
+        <Button className="md:text-[0.8vw] text-[12px] min-w-[30%] py-7">
           Learn more <FiArrowUpRight className="inline" />
         </Button>
       </Link>
@@ -168,7 +169,7 @@ const Content2 = () => (
   </div>
 );
 const Content3 = () => (
-  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:px-4 px-2 pb-24 pt-12 md:grid-cols-12">
     <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
       Hand picked sellers, Unparalleled quality
     </h2>
@@ -183,7 +184,7 @@ const Content3 = () => (
         forefront at NetGarage.
       </p>
       <Link href="/contact-us">
-        <Button className="text-[0.8vw] w-[30%] py-7">
+        <Button className="md:text-[0.8vw] text-[12px] min-w-[30%] py-7">
           Learn more <FiArrowUpRight className="inline" />
         </Button>
       </Link>

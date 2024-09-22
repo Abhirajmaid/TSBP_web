@@ -10,7 +10,6 @@ import "swiper/css/free-mode";
 // import required modules
 import { FreeMode, Keyboard, Mousewheel } from "swiper/modules";
 
-import { BikesData } from "@src/data/data";
 import { BikeCard, Loader } from ".";
 import listingsAction from "@src/lib/actions/listings.action";
 import { Toast } from "@src/context/ToastContex";
@@ -39,19 +38,37 @@ const ListingSlider = () => {
   return (
     <div className="w-full bg-transparent rounded-xl">
       <Swiper
-        slidesPerView={5}
+        slidesPerView={1} // Default for mobile
         spaceBetween={15}
         freeMode={false}
         modules={[FreeMode, Keyboard, Mousewheel]}
         keyboard={false}
         mousewheel={false}
         className="mySwiper h-auto w-full !overflow-hidden"
+        breakpoints={{
+          // Adjust number of slides based on screen width
+          640: {
+            slidesPerView: 1, // Mobile portrait
+          },
+          768: {
+            slidesPerView: 2, // Tablet portrait
+          },
+          1024: {
+            slidesPerView: 3, // Tablet landscape or small desktop
+          },
+          1280: {
+            slidesPerView: 4, // Large desktop
+          },
+          1536: {
+            slidesPerView: 5, // Extra large desktop
+          },
+        }}
       >
         {data ? (
           data?.map((item, id) => {
             return (
               <SwiperSlide
-                className="flex items-center justify-center"
+                className="flex items-center justify-center min-w-[350px]"
                 key={id}
               >
                 <BikeCard data={item} />

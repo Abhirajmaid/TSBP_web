@@ -5,8 +5,6 @@ import { Button } from "../ui/button";
 import { bikesCat } from "@src/data/data";
 import Image from "next/image";
 
-const colors = ["bg-red-600", "bg-blue-600", "bg-gray-600", "bg-green-600"];
-
 const BrandsList = [
   {
     id: "kawasaki",
@@ -81,12 +79,6 @@ const Filters = () => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
-  // useEffect(() => {
-  //   const values = params.getAll(["brand", "color", "bodytype"]);
-
-  //   document.getElementsByName("color").checked = false;
-  // }, [searchParams]);
-
   function handleChange(e) {
     const { name, value, checked } = e.target;
     if (checked) {
@@ -94,17 +86,8 @@ const Filters = () => {
       router.push(pathname + "?" + createQueryString(name, value));
     } else {
       router.push(pathname + "?" + createQueryString(name, value));
-      setFilters((pre) => {
-        return [...pre.filter((item) => item !== value)];
-      });
+      setFilters((pre) => [...pre.filter((item) => item !== value)]);
     }
-  }
-
-  function handleClick(e) {
-    // undefine
-    const { name, value } = e.target;
-    console.log(value);
-    router.push(pathname + "?" + createQueryString(name, value));
   }
 
   const createQueryString = useCallback(
@@ -124,18 +107,23 @@ const Filters = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl w-full ">
+    <div className="bg-white p-6 rounded-xl w-full">
       <h3 className="text-sm text-gray-400">Filters</h3>
       <div className="flex flex-col gap-4 mt-5">
-        <div className="flex flex-wrap w-full gap-y-4 justify-between">
+        {/* Bikes Category */}
+        <div className="grid grid-cols-2 gap-4 w-full justify-between">
           {bikesCat.map((item) => {
             return (
               <div
-                className="w-[48%] rounded-lg py-6 px-2 border-[2px] bg-white border-black/20 flex flex-col justify-center items-center cursor-pointer"
+                className="w-full rounded-lg py-6 px-2 border-[2px] bg-white border-black/20 flex flex-col justify-center items-center cursor-pointer"
                 key={item.id}
                 name={item.name}
                 value={item.name}
-                onClick={handleClick} // undefine
+                onClick={() =>
+                  router.push(
+                    pathname + "?" + createQueryString("category", item.name)
+                  )
+                }
               >
                 <Image
                   src={item.image}
@@ -149,6 +137,7 @@ const Filters = () => {
             );
           })}
         </div>
+        {/* Brands */}
         <div>
           <h3 className="text-lg font-semibold">Brands</h3>
           <div className="flex flex-col gap-3 p-3 bg-bg_dark rounded-xl">
@@ -171,14 +160,7 @@ const Filters = () => {
             })}
           </div>
         </div>
-        <div>
-          <h3 className="text-lg font-semibold">Year</h3>
-          <div></div>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold">Price Range</h3>
-          <div></div>
-        </div>
+        {/* Body Types */}
         <div>
           <h3 className="text-lg font-semibold">Body Type</h3>
           <div className="flex flex-col gap-3 p-3 bg-bg_dark rounded-xl">
@@ -201,6 +183,7 @@ const Filters = () => {
             })}
           </div>
         </div>
+        {/* Colors */}
         <div>
           <h3 className="text-lg font-semibold">Body Colour</h3>
           <div className="flex justify-between p-3 bg-bg_dark rounded-xl">
@@ -211,7 +194,7 @@ const Filters = () => {
                   className="flex flex-col items-center justify-center gap-2"
                 >
                   <span
-                    className={`w-[36px] h-[36px] bg-${item.id}-600 rounded-full`}
+                    className={`w-[36px] h-[36px] ${item.id}-600 rounded-full`}
                   ></span>
                   <div className="flex items-center gap-2">
                     <input
@@ -227,9 +210,10 @@ const Filters = () => {
             })}
           </div>
         </div>
+        {/* Clear Filters */}
         <div className="flex justify-between">
           <Button
-            className="w-[48%] bg-primary_light/80"
+            className="w-full sm:w-[48%] bg-primary_light/80"
             onClick={clearFilters}
           >
             Clear Filters

@@ -4,17 +4,17 @@ import { Icon } from "@iconify/react";
 
 const Variant = ({ data }) => {
   return (
-    <div className="bg-white text-text_para  rounded-lg p-6 w-[74%] shadow-lg">
+    <div className="bg-white text-text_para  rounded-lg p-6 md:w-[74%] w-full shadow-lg">
       <h2 className="text-2xl font-semibold mb-4">{data?.attributes?.name}</h2>
       <table className="w-full">
         <thead>
           <tr className="text-left border-b">
             <th className="pb-2">Variant</th>
             <th className="pb-2">Price</th>
-            <th className="pb-2">Specifications</th>
+            <th className="pb-2 hidden md:block">Specifications</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-sm">
           {data?.attributes?.variants?.data?.map((item, id) => {
             return (
               <tr className="border-b" key={id}>
@@ -27,18 +27,18 @@ const Variant = ({ data }) => {
                     Avg. Ex-Showroom
                   </span>
                 </td>
-                <td className="py-4">
+                <td className="py-4 hidden md:block">
                   {item?.attributes?.front_brake_type} Brakes,{" "}
                   {item?.attributes?.wheel_type} Wheels
                 </td>
-                <td className="py-4">
+                {/* <td className="py-4 hidden md:block">
                   <Link
                     href={`/bikes/${data?.attributes?.brand_or_company_name?.data?.attributes?.name}/${data?.attributes?.slug}`}
                     className=" bg-primary p-2 rounded-full text-white flex justify-center"
                   >
                     <Icon icon="uiw:right" width="1.2em" height="1.2em" />
                   </Link>
-                </td>
+                </td> */}
               </tr>
             );
           })}

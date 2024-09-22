@@ -1,7 +1,6 @@
 "use client";
 import { BikeCard, Loader } from "@src/components/common";
 import { Toast } from "@src/context/ToastContex";
-import { BikesData } from "@src/data/data";
 import listingsAction from "@src/lib/actions/listings.action";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -47,16 +46,19 @@ const page = () => {
   };
 
   return (
-    <div className="w-full bg-white flex flex-wrap justify-between p-7 rounded-xl gap-3 gap-y-5">
+    <div className="w-full bg-white flex flex-wrap justify-center md:justify-start p-4 md:p-7 rounded-xl gap-3 gap-y-5">
       {data ? (
-        data?.length == 0 ? (
-          <h1 className="font-bold text-[36px] text-center">
+        data?.length === 0 ? (
+          <h1 className="font-bold text-[24px] md:text-[36px] text-center w-full">
             Nothing To show...
           </h1>
         ) : (
           data?.map((item, id) => {
             return (
-              <div className="w-[32%]" key={id}>
+              <div
+                className="w-full sm:w-[48%] md:w-[32%] lg:w-[24%] xl:w-[19%] min-w-[350px]"
+                key={id}
+              >
                 <BikeCard data={item} />
               </div>
             );

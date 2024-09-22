@@ -11,72 +11,69 @@ import React from "react";
 const Footer = ({ bg }) => {
   return (
     <div className={`bg-${bg} h-fit w-full mt-[60px]`}>
-      <div className="flex justify-between items-center p-[5%]">
-        <div className="flex flex-col gap-8 text-white">
+      <div className="flex flex-col md:flex-row justify-between items-center p-[5%] gap-8">
+        <div className="flex flex-col gap-4 text-white md:w-[25%]">
           <Image
             src="/images/LOGO2.png"
-            width={300}
-            height={300}
+            width={200}
+            height={60}
             alt="NetGarage"
-            className="w-[300px] h-[60px]"
+            className="w-[200px] h-[40px] md:w-[300px] md:h-[60px]"
           />
-
-          <p>For the Love of Superbikes</p>
+          <p className="text-sm md:text-base">For the Love of Superbikes</p>
         </div>
-        <div className="flex w-[50%] justify-between items-start">
-          <div>
-            <h4 className="mb-[40px] font-semibold text-white">Links</h4>
-            <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {navLinks.map((item, i) => {
-                return (
-                  <Link href={item.url} key={i}>
-                    <li>{item.linkText}</li>
-                  </Link>
-                );
-              })}
+        <div className="grid-cols-2 grid md:flex md:flex-row md:w-[70%] justify-between items-start gap-8">
+          <div className="w-full md:w-auto">
+            <h4 className="mb-[20px] md:mb-[40px] font-semibold text-white">
+              Links
+            </h4>
+            <ul className="flex flex-col gap-3 text-sm text-white font-normal">
+              {navLinks.map((item, i) => (
+                <Link href={item.url} key={i}>
+                  <li>{item.linkText}</li>
+                </Link>
+              ))}
             </ul>
           </div>
-          <div>
-            <h4 className="mb-[40px] font-semibold text-white">Other Links</h4>
-            <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {otherLinks.map((item, i) => {
-                return (
-                  <Link href={item.url} key={i}>
-                    <li>{item.linkText}</li>
-                  </Link>
-                );
-              })}
+          <div className="w-full md:w-auto">
+            <h4 className="mb-[20px] md:mb-[40px] font-semibold text-white">
+              Other Links
+            </h4>
+            <ul className="flex flex-col gap-3 text-sm text-white font-normal">
+              {otherLinks.map((item, i) => (
+                <Link href={item.url} key={i}>
+                  <li>{item.linkText}</li>
+                </Link>
+              ))}
             </ul>
           </div>
-          <div>
-            <h4 className="mb-[40px] font-semibold text-white">
+          <div className="w-full md:w-auto">
+            <h4 className="mb-[20px] md:mb-[40px] font-semibold text-white">
               Consumer Policy
             </h4>
-            <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {customerLinks.map((item, i) => {
-                return (
-                  <Link href={item.url} key={i}>
-                    <li>{item.linkText}</li>
-                  </Link>
-                );
-              })}
+            <ul className="flex flex-col gap-3 text-sm text-white font-normal">
+              {customerLinks.map((item, i) => (
+                <Link href={item.url} key={i}>
+                  <li>{item.linkText}</li>
+                </Link>
+              ))}
             </ul>
           </div>
-          <div>
-            <h4 className="mb-[40px] font-semibold text-white">Socials</h4>
-            <ul className="flex flex-col gap-4 text-sm text-white font-normal">
-              {socialLinks.map((item, i) => {
-                return (
-                  <Link href={item.url} target="_blank" key={i}>
-                    <li>{item.linkText}</li>
-                  </Link>
-                );
-              })}
+          <div className="w-full md:w-auto">
+            <h4 className="mb-[20px] md:mb-[40px] font-semibold text-white">
+              Socials
+            </h4>
+            <ul className="flex flex-col gap-3 text-sm text-white font-normal">
+              {socialLinks.map((item, i) => (
+                <Link href={item.url} target="_blank" key={i}>
+                  <li>{item.linkText}</li>
+                </Link>
+              ))}
             </ul>
           </div>
         </div>
       </div>
-      <div className="text-center text-gray-300 pb-3">
+      <div className="text-center text-gray-300 pb-3 text-sm">
         All Rights Reserved © NETGARAGE
       </div>
     </div>

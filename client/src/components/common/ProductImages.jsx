@@ -7,30 +7,35 @@ const ProductImages = ({ images }) => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="flex gap-3 w-full h-full">
-      <div className="w-[75%] h-auto rounded-lg overflow-hidden border">
+    <div className="flex flex-col md:flex-row gap-3 w-full h-full">
+      {/* Main Image */}
+      <div className="w-full md:w-[75%] h-auto rounded-lg overflow-hidden border">
         <Image
           src={images[index]?.attributes?.url}
           alt="MMJ"
           width={1500}
           height={1500}
-          className="w-full h-[600px] object-cover "
+          className="w-full h-[300px] sm:h-[400px] md:h-[600px] object-cover"
           priority
         />
       </div>
-      <div className="flex flex-col h-[600px] justify-between gap-3 w-[25%]">
+
+      {/* Thumbnail Images */}
+      <div className="flex md:flex-col w-full md:w-[25%] h-auto md:h-[600px] justify-between gap-3">
         {images.slice(0, 3).map((item, i) => (
           <div
-            className="w-auto h-[32%] gap-3 cursor-pointer rounded-lg border overflow-hidden"
+            className={`cursor-pointer rounded-lg border overflow-hidden h-[100px] w-1/3 md:w-full md:h-[32%] ${
+              i === index ? "border-2 border-blue-500" : ""
+            }`}
             key={i}
             onClick={() => setIndex(i)}
           >
             <Image
               src={item?.attributes?.url}
-              alt="MMJ"
+              alt="MMJ Thumbnail"
               width={500}
               height={500}
-              className="object-cover h-full"
+              className="object-cover w-full h-full"
               priority
             />
           </div>

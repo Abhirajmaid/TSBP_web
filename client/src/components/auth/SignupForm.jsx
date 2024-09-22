@@ -15,7 +15,6 @@ import {
 } from "@/src/components/ui/form";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
 import { useRouter } from "next/navigation";
 import { setCookie } from "cookies-next";
 import userAction from "@src/lib/actions/user.action";
@@ -47,9 +46,7 @@ const formSchema = z.object({
 const SignupForm = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [loader, setLoader] = useState(false);
-
   const router = useRouter();
-
   const { success, error, warn } = Toast();
 
   const form = useForm({
@@ -73,25 +70,15 @@ const SignupForm = () => {
     setIsChecked(event.target.checked);
   };
 
-  // const handleSubscribe = (values) => {
-  //   userAction
-  //     .postSubscriber(values)
-  //     .then()
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // };
-
   function onSubmit(values) {
     setLoader(true);
     if (isChecked) {
-      // handleSubscribe(values);
       userAction
         .registerUser(values)
         .then((resp) => {
           sessionStorage.setItem("user", JSON.stringify(resp.data.user));
           sessionStorage.setItem("jwt", JSON.stringify(resp.data.jwt));
-          success("You are Successfuly Signup");
+          success("You are Successfully Signed Up");
           setLoader(false);
           setCookie("jwt", resp.data.jwt, { maxAge: 60 * 60 * 24 });
           router.push("/store");
@@ -108,163 +95,127 @@ const SignupForm = () => {
   }
 
   return (
-    <div>
-      <div className="flex min-h-[100vh] bg-white">
-        {/* Left Image Section */}
-        <div className="w-[55%] min-h-full">
-          <Image
-            src="/images/contact_us.png"
-            alt="netgarages"
-            className="object-cover w-full min-h-full"
-            width={1500}
-            height={1500}
-          />
-        </div>
+    <div className="flex min-h-[100vh] bg-white flex-col md:flex-row">
+      {/* Left Image Section */}
+      <div className="w-full md:w-1/2 min-h-full">
+        <Image
+          src="/images/contact_us.png"
+          alt="netgarages"
+          className="object-cover w-full min-h-full"
+          width={1500}
+          height={1500}
+        />
+      </div>
 
-        {/* Right Form Section */}
-        <div className="w-[60%] flex flex-col justify-center px-16 pl-[80px]">
-          <h2 className="text-4xl font-bold text-gray-800 mb-2">Sign up</h2>
-          <p className="text-gray-600 mb-12">
-            Sign up for free to experience new world of Jewellery.
-          </p>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6 w-[75%]"
-            >
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>First and Last Name*</FormLabel>
-                    <FormControl>
-                      <input
-                        type="text"
-                        placeholder="Jhon Doe"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Put your First and Last name.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address*</FormLabel>
-                    <FormControl>
-                      <input
-                        type="email"
-                        placeholder="jhondoe@gmail.com"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormDescription>Put your email address.</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="mobile_number"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Mobile Number (WhatsApp) *</FormLabel>
-                    <FormControl>
-                      <input
-                        type="text"
-                        placeholder="+91 7385302967"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Put your WhatsApp mobile no.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Set Password *</FormLabel>
-                    <FormControl>
-                      <input
-                        type="password"
-                        placeholder="***"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Put min 6 character password.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="space-y-2">
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    className="mr-2 rounded text-primary focus:ring-primary"
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor="terms" className="text-gray-600">
-                    Agree to our
-                    <a href="#" className="text-primary">
-                      {" "}
-                      Terms of use{" "}
-                    </a>
-                    and
-                    <a href="#" className="text-primary">
-                      {" "}
-                      Privacy Policy{" "}
-                    </a>
-                  </label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="newsletter"
-                    className="mr-2 rounded text-primary focus:ring-primary"
-                  />
-                  <label htmlFor="newsletter" className="text-gray-600">
-                    Subscribe to our new design catalogue
-                  </label>
-                </div>
+      {/* Right Form Section */}
+      <div className="w-full md:w-1/2 flex flex-col justify-center px-6 py-6 md:pl-[80px]">
+        <h2 className="text-4xl font-bold text-gray-800 mb-2">Sign up</h2>
+        <p className="text-gray-600 mb-12">
+          Sign up for free to experience a new world of Jewellery.
+        </p>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6 w-full md:w-[80%]"
+          >
+            {["username", "email", "mobile_number", "password"].map(
+              (fieldName) => (
+                <FormField
+                  key={fieldName}
+                  control={form.control}
+                  name={fieldName}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {fieldName === "username"
+                          ? "First and Last Name*"
+                          : fieldName === "email"
+                          ? "Email Address*"
+                          : fieldName === "mobile_number"
+                          ? "Mobile Number (WhatsApp) *"
+                          : "Set Password *"}
+                      </FormLabel>
+                      <FormControl>
+                        <input
+                          type={fieldName === "password" ? "password" : "text"}
+                          placeholder={
+                            fieldName === "username"
+                              ? "John Doe"
+                              : fieldName === "email"
+                              ? "jhondoe@gmail.com"
+                              : fieldName === "mobile_number"
+                              ? "+91 7385302967"
+                              : "***"
+                          }
+                          {...field}
+                          className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        {fieldName === "username"
+                          ? "Put your First and Last name."
+                          : fieldName === "email"
+                          ? "Put your email address."
+                          : fieldName === "mobile_number"
+                          ? "Put your WhatsApp mobile no."
+                          : "Put min 6 character password."}
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )
+            )}
+            <div className="space-y-2 text-sm md:text-base">
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  className="mr-2 rounded text-primary focus:ring-primary"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="terms" className="text-gray-600">
+                  Agree to our
+                  <a href="#" className="text-primary">
+                    {" "}
+                    Terms of use{" "}
+                  </a>
+                  and
+                  <a href="#" className="text-primary">
+                    {" "}
+                    Privacy Policy{" "}
+                  </a>
+                </label>
               </div>
-              <Button
-                type="submit"
-                variant="primary"
-                disabled={loader ? true : false}
-                className={`w-[30%] bg-primary text-white py-6 rounded-lg hover:bg-primary-dark transition`}
-              >
-                Sign up
-              </Button>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="newsletter"
+                  className="mr-2 rounded text-primary focus:ring-primary"
+                />
+                <label htmlFor="newsletter" className="text-gray-600">
+                  Subscribe to our new design catalogue
+                </label>
+              </div>
+            </div>
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={loader}
+              className="w-full md:w-[30%] bg-primary text-white py-6 rounded-lg hover:bg-primary-dark transition"
+            >
+              Sign up
+            </Button>
 
-              <p className="text-start text-gray-600">
-                Already have an account?{" "}
-                <Link href="/sign-in" className="text-primary">
-                  Log in
-                </Link>
-              </p>
-            </form>
-          </Form>
-        </div>
+            <p className="text-start text-gray-600">
+              Already have an account?{" "}
+              <Link href="/sign-in" className="text-primary">
+                Log in
+              </Link>
+            </p>
+          </form>
+        </Form>
       </div>
     </div>
   );

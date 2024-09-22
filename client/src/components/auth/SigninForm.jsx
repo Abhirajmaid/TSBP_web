@@ -39,9 +39,7 @@ const formSchema = z.object({
 
 const SigninForm = () => {
   const [loader, setLoader] = useState(false);
-
   const router = useRouter();
-
   const { success, error, warn } = Toast();
 
   const form = useForm({
@@ -67,7 +65,7 @@ const SigninForm = () => {
       .then((resp) => {
         sessionStorage.setItem("user", JSON.stringify(resp.data.user));
         sessionStorage.setItem("jwt", JSON.stringify(resp.data.jwt));
-        success("You are Successfuly Log In");
+        success("You are Successfully Logged In");
         setLoader(false);
         setCookie("jwt", resp.data.jwt, { maxAge: 60 * 60 * 24 });
         router.push("/store");
@@ -81,101 +79,97 @@ const SigninForm = () => {
   }
 
   return (
-    <div>
-      <div className="flex min-h-[100vh] bg-white">
-        {/* Left Image Section */}
-        <div className="w-[55%] min-h-full">
-          <Image
-            src="/images/contact_us.png"
-            alt="netgarages"
-            className="object-cover w-full min-h-full"
-            width={1500}
-            height={1500}
-          />
-        </div>
+    <div className="flex min-h-[100vh] bg-white flex-col md:flex-row">
+      {/* Left Image Section */}
+      <div className="w-full md:w-1/2 min-h-full">
+        <Image
+          src="/images/contact_us.png"
+          alt="netgarages"
+          className="object-cover w-full min-h-full"
+          width={1500}
+          height={1500}
+        />
+      </div>
 
-        {/* Right Form Section */}
-        <div className="w-[60%] flex flex-col justify-center px-16 pl-[80px]">
-          <h2 className="text-4xl font-bold text-gray-800 mb-2">Log In</h2>
-          <p className="text-gray-600 mb-12">Log In with OTP verification</p>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-5 w-[75%]"
+      {/* Right Form Section */}
+      <div className="w-full md:w-1/2 flex flex-col justify-center px-6 py-6 md:pl-[80px]">
+        <h2 className="text-4xl font-bold text-gray-800 mb-2">Log In</h2>
+        <p className="text-gray-600 mb-12">Log In with OTP verification</p>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-5 w-full md:w-[75%]"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email Address*</FormLabel>
+                  <FormControl>
+                    <input
+                      type="email"
+                      placeholder="jhondoe@gmail.com"
+                      {...field}
+                      className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="mobile_number"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mobile Number (WhatsApp) *</FormLabel>
+                  <FormControl>
+                    <input
+                      type="text"
+                      placeholder="+91 7385302967"
+                      {...field}
+                      className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password *</FormLabel>
+                  <FormControl>
+                    <input
+                      type="password"
+                      placeholder="***"
+                      {...field}
+                      className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={loader}
+              className="w-full md:w-[30%] bg-primary text-white py-6 rounded-lg transition hover:bg-primary-dark"
             >
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address*</FormLabel>
-                    <FormControl>
-                      <input
-                        type="email"
-                        placeholder="jhondoe@gmail.com"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="mobile_number"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Mobile Number (WhatsApp) *</FormLabel>
-                    <FormControl>
-                      <input
-                        type="text"
-                        placeholder="+91 7385302967"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password *</FormLabel>
-                    <FormControl>
-                      <input
-                        type="password"
-                        placeholder="***"
-                        {...field}
-                        className="w-full px-4 !py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              {
-                <Button
-                  type="submit"
-                  variant="primary"
-                  disabled={loader ? true : false}
-                  className={`w-[30%] bg-primary text-white py-6 rounded-lg transition hover:bg-primary`}
-                >
-                  Log In
-                </Button>
-              }
-              <p className="text-start text-gray-600">
-                Dodn't have an account?{" "}
-                <Link href="/sign-up" className="text-primary">
-                  Sign Up
-                </Link>
-              </p>
-            </form>
-          </Form>
-        </div>
+              Log In
+            </Button>
+            <p className="text-start text-gray-600">
+              Don't have an account?{" "}
+              <Link href="/sign-up" className="text-primary">
+                Sign Up
+              </Link>
+            </p>
+          </form>
+        </Form>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className={`${montserrat.className} bg-black`}>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <Footer bg="black" />
       </div>

@@ -4,7 +4,7 @@ import { bikesCat } from "@src/data/data";
 
 const BikeCat = () => {
   return (
-    <div className="w-full flex justify-between gap-3 bg-white p-[20px] rounded-xl">
+    <div className="w-full grid grid-cols-2 md:grid-cols-6 justify-between gap-3 bg-white p-[20px] rounded-xl">
       {bikesCat.map((item) => {
         return (
           <div

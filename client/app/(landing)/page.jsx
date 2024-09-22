@@ -11,7 +11,7 @@ export default function Home() {
         width={500}
         className="fixed top-0 left-0"
       />
-      <div className="px-[4%] gap-[160px] flex flex-col ">
+      <div className="px-[4%] md:gap-[160px] gap-[100px] flex flex-col">
         <Hero />
         <About />
         <EventSec />
